@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const themeToggle = document.getElementById("theme-toggle");
     const themeIcon = themeToggle.querySelector("i");
 
-    // --- Переключение тем (Ночная / Дневная) ---\
+    // --- Переключение тем (Ночная / Дневная) ---
     const currentTheme = localStorage.getItem("theme") || "dark";
     if (currentTheme === "light") {
         document.documentElement.setAttribute("data-theme", "light");
@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     themeToggle.addEventListener("click", () => {
         let theme = "dark";
-        if (document.documentElement.getAttribute("data-theme") !== \"light\") {
+        if (document.documentElement.getAttribute("data-theme") !== "light") {
             document.documentElement.setAttribute("data-theme", "light");
             themeIcon.className = "fas fa-sun";
             theme = "light";
@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
         localStorage.setItem("theme", theme);
     });
 
-    // --- Вылет эффекта "перьев/частиц" из логотипа ---\
+    // --- Вылет эффекта "перьев/частиц" из логотипа ---
     function createParticles() {
         const rect = logo.getBoundingClientRect();
         const startX = rect.left + rect.width * 0.85;
@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
     logo.addEventListener("mouseenter", createParticles);
     logo.addEventListener("click", createParticles);
 
-    // --- Эффект Ripple (Волны при кликах на плашки) ---\
+    // --- Эффект Ripple (Волны при кликах на плашки) ---
     const buttons = document.querySelectorAll(".link-item");
     buttons.forEach(button => {
         button.addEventListener("click", function(e) {
@@ -87,7 +87,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // ==========================================================================
-    // ЛОГИКА ИИ-ЧАТА (GEMINI 2.5 FLASH REST API)
+    // ЛОГИКА ИИ-ЧАТА (GEMINI 2.5 FLASH)
     // ==========================================================================
 
     const chatWidgetToggle = document.getElementById("chat-widget-toggle");
@@ -97,7 +97,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const chatUserInput = document.getElementById("chat-user-input");
     const sendChatMsgBtn = document.getElementById("send-chat-msg-btn");
 
-    // Маскировка ключа (сборка из осколков от поисковых роботов)
     const _k1 = "AIzaSyC1";
     const _k2 = "z2d6dKtF_ZHO";
     const _k3 = "oO4oQe3WB";
@@ -107,7 +106,6 @@ document.addEventListener("DOMContentLoaded", () => {
         return _k1 + _k2 + _k3 + _k4;
     }
 
-    // Системный промпт с правилами, архитектурой сайта и фиксированным прайсом
     const systemPrompt = `Ты — NovaBot, официальный ИИ-ассистент образовательного консалтингового проекта NovaScriptum. Твоя главная задача — проконсультировать студента и перевести общение на нашего менеджера для оформления заказа.
 
 ИНФОРМАЦИЯ О НАШЕМ САЙТЕ И СТРУКТУРЕ КНОПОК:
@@ -133,40 +131,46 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let conversationHistory = [];
 
-    // Показать/скрыть чат
-    chatWidgetToggle.addEventListener("click", () => {
+    // Универсальная функция переключения видимости чата (ПК + Мобилки)
+    function toggleChat(e) {
+        if (e) e.preventDefault();
         aiChatWindow.classList.toggle("hidden");
         if (!aiChatWindow.classList.contains("hidden")) {
-            chatUserInput.focus();
+            setTimeout(() => chatUserInput.focus(), 100);
         }
-    });
+    }
 
-    closeChatBtn.addEventListener("click", () => {
+    // Обработчики для кнопки вызова (клик и тач для мобильных систем)
+    chatWidgetToggle.addEventListener("click", toggleChat);
+    chatWidgetToggle.addEventListener("touchstart", toggleChat, { passive: false });
+
+    closeChatBtn.addEventListener("click", (e) => {
+        e.preventDefault();
         aiChatWindow.classList.add("hidden");
     });
+    closeChatBtn.addEventListener("touchstart", (e) => {
+        e.preventDefault();
+        aiChatWindow.classList.add("hidden");
+    }, { passive: false });
 
     // Отправка сообщений
     async function handleSendMessage() {
         const text = chatUserInput.value.trim();
         if (!text) return;
 
-        // Добавляем сообщение пользователя на экран
         appendMessage(text, "user-msg");
         chatUserInput.value = "";
 
-        // Создаем индикатор загрузки бота
         const typingElem = document.createElement("div");
         typingElem.classList.add("msg", "bot-msg");
         typingElem.innerHTML = `<div class="typing-indicator"><span></span><span></span><span></span></div>`;
         chatMessagesContainer.appendChild(typingElem);
         chatMessagesContainer.scrollTop = chatMessagesContainer.scrollHeight;
 
-        // Сохраняем в историю
         conversationHistory.push({ role: "user", parts: [{ text: text }] });
 
         try {
             const apiKey = getDecryptedKey();
-            // Используем стандартный прямой POST-запрос к официальному REST шлюзу Google Gemini
             const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
@@ -192,20 +196,6 @@ document.addEventListener("DOMContentLoaded", () => {
             appendMessage("Не удалось отправить сообщение. Пожалуйста, воспользуйтесь кнопками быстрой связи с менеджером.", "bot-msg");
             console.error("Gemini API Error:", error);
         }
-    }
-
-    function appendMessage(text, className) {
-        const msgDiv = document.createElement("div");
-        msgDiv.classList.add("msg", className);
-        
-        // Превращаем текстовые юзернеймы и ссылки в кликабельные HTML-ссылки для удобства
-        let formattedText = text
-            .replace(/((http|https):\/\/[^\s]+)/g, '<a href="$1" target="_blank" style="color: inherit; text-decoration: underline;">$1</a>')
-            .replace(/@([a-zA-Z0-9_]{5,32})/g, '<a href="https://t.me/$1" target="_blank" style="color: inherit; text-decoration: underline;">@$1</a>');
-            
-        msgDiv.innerHTML = formattedText.replace(/\n/g, "<br>");
-        chatMessagesContainer.appendChild(msgDiv);
-        chatMessagesContainer.scrollTop = chatMessagesContainer.scrollHeight;
     }
 
     sendChatMsgBtn.addEventListener("click", handleSendMessage);
