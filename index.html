@@ -95,6 +95,30 @@
         </div>
     </div>
 
+    <button id="chat-widget-toggle" class="chat-toggle-btn" aria-label="Открыть ИИ-чат">
+        <i class="fas fa-robot"></i>
+    </button>
+
+    <div id="ai-chat-window" class="chat-window hidden">
+        <div class="chat-header">
+            <div class="chat-header-info">
+                <i class="fas fa-circle-nodes ai-icon-glow"></i>
+                <div>
+                    <h4>NovaBot</h4>
+                    <span>Консультант NovaScriptum</span>
+                </div>
+            </div>
+            <button id="close-chat-btn" class="chat-close-btn">&times;</button>
+        </div>
+        <div id="chat-messages-container" class="chat-messages">
+            <div class="msg bot-msg">Привет! Я ИИ-помощник NovaScriptum. ✒️ Помогу сориентироваться по услугам, ценам или подскажу, как связаться с нашей командой. Какой у тебя вопрос?</div>
+        </div>
+        <div class="chat-footer-input">
+            <input type="text" id="chat-user-input" placeholder="Введите ваш вопрос..." autocomplete="off">
+            <button id="send-chat-msg-btn" aria-label="Отправить"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>
