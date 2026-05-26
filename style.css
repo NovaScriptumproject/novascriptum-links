@@ -18,15 +18,15 @@
     --insta-color: #f15b24;
     --logo-gradient: linear-gradient(135deg, #1e3c72 0%, #631a35 100%);
 
-    /* Чат ИИ */
+    /* Чат ИИ Ночь */
     --chat-btn-bg: linear-gradient(135deg, #631a35 0%, #1e3c72 100%);
-    --chat-window-bg: rgba(15, 18, 26, 0.75);
+    --chat-window-bg: rgba(15, 18, 26, 0.95);
     --msg-bot-bg: rgba(255, 255, 255, 0.05);
     --msg-user-bg: rgba(30, 60, 114, 0.4);
 }
 
 /* Переменные для Дневной темы */
-[data-theme="light"] {
+html[data-theme="light"] {
     --bg-gradient: radial-gradient(circle at center, #f4ebee 0%, #eef2f7 85%);
     --card-bg: rgba(0, 0, 0, 0.02);
     --card-border: rgba(0, 0, 0, 0.06);
@@ -36,13 +36,10 @@
     --btn-toggle-color: #1c2434;
     --logo-border: #d2dae2;
     --shadow-alpha: 0.15;
-    
-    /* Дополнительные оттенки для дневных кнопок */
     --mail-color: #1c2434;
 
     /* Чат ИИ День */
-    --chat-btn-bg: linear-gradient(135deg, #d83a56 0%, #1e3c72 100%);
-    --chat-window-bg: rgba(255, 255, 255, 0.85);
+    --chat-window-bg: rgba(255, 255, 255, 0.98);
     --msg-bot-bg: rgba(0, 0, 0, 0.05);
     --msg-user-bg: rgba(30, 60, 114, 0.15);
 }
@@ -50,7 +47,7 @@
 * {
     margin: 0;
     padding: 0;
-    box-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 body {
@@ -97,12 +94,13 @@ body {
     align-items: center;
     font-size: 1.1rem;
     transition: all 0.3s ease;
+    z-index: 12;
 }
 
 .theme-btn:hover {
     transform: scale(1.08);
     background: var(--text-main);
-    color: var(--bg-gradient);
+    color: #080b11;
 }
 
 .logo-wrapper {
@@ -299,7 +297,7 @@ body {
 }
 
 /* ==========================================================================
-   СТИЛИ ДЛЯ ИИ-ЧАТА (НОВЫЙ БЛОК)
+   СТИЛИ ДЛЯ ИИ-ЧАТА (ИСПРАВЛЕНО И ОПТИМИЗИРОВАНО)
    ========================================================================== */
 
 .chat-toggle-btn {
@@ -311,20 +309,21 @@ body {
     border-radius: 50%;
     background: var(--chat-btn-bg);
     border: none;
-    color: #ffffff;
+    color: #ffffff !important;
     font-size: 1.5rem;
     cursor: pointer;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
-    z-index: 100;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+    z-index: 9999; /* Поверх всех элементов */
     display: flex;
     justify-content: center;
     align-items: center;
     transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    -webkit-tap-highlight-color: transparent;
 }
 
 .chat-toggle-btn:hover {
     transform: scale(1.1) rotate(10deg);
-    box-shadow: 0 12px 30px rgba(30, 60, 114, 0.4);
+    box-shadow: 0 12px 30px rgba(30, 60, 114, 0.5);
 }
 
 .chat-window {
@@ -336,26 +335,26 @@ body {
     background: var(--chat-window-bg);
     border: 1px solid var(--card-border);
     border-radius: 24px;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.4);
-    z-index: 99;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+    z-index: 9998;
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    transition: all 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
     transform-origin: bottom right;
 }
 
 .chat-window.hidden {
     opacity: 0;
-    transform: scale(0.8) translateY(30px);
+    transform: scale(0.5) translateY(40px);
     pointer-events: none;
 }
 
 .chat-header {
     padding: 16px 20px;
-    background: rgba(0,0,0,0.2);
+    background: rgba(0,0,0,0.15);
     border-bottom: 1px solid var(--card-border);
     display: flex;
     justify-content: space-between;
@@ -393,10 +392,11 @@ body {
     background: none;
     border: none;
     color: var(--text-muted);
-    font-size: 1.6rem;
+    font-size: 1.8rem;
     cursor: pointer;
     opacity: 0.6;
     transition: opacity 0.2s;
+    padding: 5px;
 }
 
 .chat-close-btn:hover {
@@ -413,12 +413,8 @@ body {
     gap: 12px;
 }
 
-/* Кастомизация скроллбара чата */
 .chat-messages::-webkit-scrollbar {
-    width: 5px;
-}
-.chat-messages::-webkit-scrollbar-track {
-    background: transparent;
+    width: 4px;
 }
 .chat-messages::-webkit-scrollbar-thumb {
     background: var(--card-border);
@@ -429,10 +425,10 @@ body {
     max-width: 85%;
     padding: 12px 16px;
     border-radius: 18px;
-    font-size: 0.84rem;
+    font-size: 0.86rem;
     line-height: 1.4;
     word-wrap: break-word;
-    animation: chatMessageFade 0.3s ease forwards;
+    animation: chatMessageFade 0.25s ease forwards;
 }
 
 .bot-msg {
@@ -441,6 +437,11 @@ body {
     align-self: flex-start;
     border-bottom-left-radius: 4px;
     border: 1px solid var(--card-border);
+}
+
+html[data-theme="light"] .bot-msg {
+    background: #f0f2f5;
+    border-color: rgba(0,0,0,0.05);
 }
 
 .user-msg {
@@ -452,49 +453,51 @@ body {
 
 .chat-footer-input {
     padding: 14px 16px;
-    background: rgba(0,0,0,0.1);
+    background: rgba(0,0,0,0.08);
     border-top: 1px solid var(--card-border);
     display: flex;
     gap: 10px;
+    align-items: center;
 }
 
 .chat-footer-input input {
     flex-grow: 1;
-    background: rgba(0,0,0,0.2);
+    background: rgba(0,0,0,0.15);
     border: 1px solid var(--card-border);
     border-radius: 14px;
-    padding: 10px 14px;
+    padding: 12px 14px;
     color: var(--text-main);
     font-family: inherit;
-    font-size: 0.85rem;
+    font-size: 0.88rem;
     outline: none;
     transition: border-color 0.2s;
 }
 
-.chat-footer-input input:focus {
-    border-color: rgba(30, 60, 114, 0.8);
+html[data-theme="light"] .chat-footer-input input {
+    background: #ffffff;
+    color: #1c2434;
 }
 
 .chat-footer-input button {
     background: var(--chat-btn-bg);
     border: none;
-    color: #ffffff;
-    width: 38px;
-    height: 38px;
+    color: #ffffff !important;
+    width: 42px;
+    height: 42px;
     border-radius: 12px;
     cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 0.95rem;
+    font-size: 1rem;
     transition: transform 0.2s;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .chat-footer-input button:hover {
     transform: scale(1.05);
 }
 
-/* Индикатор печати бота */
 .typing-indicator {
     display: flex;
     gap: 4px;
@@ -516,13 +519,13 @@ body {
 .typing-indicator span:nth-child(3) { animation-delay: .4s; }
 
 @keyframes chatMessageFade {
-    from { opacity: 0; transform: translateY(10px); }
+    from { opacity: 0; transform: translateY(8px); }
     to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes pulseGlow {
     0% { filter: drop-shadow(0 0 2px rgba(36,161,222,0.4)); }
-    50% { filter: drop-shadow(0 0 8px rgba(36,161,222,0.8)); }
+    50% { filter: drop-shadow(0 0 6px rgba(36,161,222,0.8)); }
     100% { filter: drop-shadow(0 0 2px rgba(36,161,222,0.4)); }
 }
 
@@ -532,16 +535,17 @@ body {
     100% { opacity: .2; transform: scale(0.9); }
 }
 
-/* Адаптивность виджета для мобилок */
+/* Мобильная адаптация виджета */
 @media (max-width: 480px) {
     .chat-window {
-        width: calc(100% - 40px);
-        right: 20px;
-        left: 20px;
-        bottom: 95px;
+        width: calc(100% - 30px);
+        right: 15px;
+        left: 15px;
+        bottom: 85px;
+        height: 440px;
     }
     .chat-toggle-btn {
-        bottom: 20px;
-        right: 20px;
+        bottom: 15px;
+        right: 15px;
     }
 }
