@@ -15,61 +15,78 @@
     --vk-color: #0077FF;
     --wa-color: #25D366;
     --mail-color: #ffffff;
+    --insta-color: #f15b24;
     --logo-gradient: linear-gradient(135deg, #1e3c72 0%, #631a35 100%);
+
+    /* Чат ИИ */
+    --chat-btn-bg: linear-gradient(135deg, #631a35 0%, #1e3c72 100%);
+    --chat-window-bg: rgba(15, 18, 26, 0.75);
+    --msg-bot-bg: rgba(255, 255, 255, 0.05);
+    --msg-user-bg: rgba(30, 60, 114, 0.4);
 }
 
 /* Переменные для Дневной темы */
 [data-theme="light"] {
     --bg-gradient: radial-gradient(circle at center, #f4ebee 0%, #eef2f7 85%);
-    --card-bg: rgba(0, 0, 0, 0.03);
-    --card-border: rgba(0, 0, 0, 0.08);
-    --text-main: #1e2530;
-    --text-muted: #626d7a;
-    --btn-toggle-bg: rgba(0, 0, 0, 0.05);
-    --btn-toggle-color: #1e2530;
-    --logo-border: #d1d9e6;
+    --card-bg: rgba(0, 0, 0, 0.02);
+    --card-border: rgba(0, 0, 0, 0.06);
+    --text-main: #1c2434;
+    --text-muted: #5a6675;
+    --btn-toggle-bg: rgba(0, 0, 0, 0.04);
+    --btn-toggle-color: #1c2434;
+    --logo-border: #d2dae2;
     --shadow-alpha: 0.15;
-    --mail-color: #1e2530;
+    
+    /* Дополнительные оттенки для дневных кнопок */
+    --mail-color: #1c2434;
+
+    /* Чат ИИ День */
+    --chat-btn-bg: linear-gradient(135deg, #d83a56 0%, #1e3c72 100%);
+    --chat-window-bg: rgba(255, 255, 255, 0.85);
+    --msg-bot-bg: rgba(0, 0, 0, 0.05);
+    --msg-user-bg: rgba(30, 60, 114, 0.15);
 }
 
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    box-box-sizing: border-box;
 }
 
 body {
+    font-family: 'Geologica', sans-serif;
     background: var(--bg-gradient);
-    background-attachment: fixed;
     color: var(--text-main);
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
     overflow-x: hidden;
-    padding: 30px 16px;
-    font-family: 'Geologica', sans-serif;
+    padding: 20px;
+    position: relative;
 }
 
 .card-container {
-    position: relative;
     width: 100%;
-    max-width: 420px;
+    max-width: 440px;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 32px;
+    padding: 40px 30px;
     text-align: center;
-    z-index: 2;
-    background: rgba(255, 255, 255, 0.01);
-    padding: 30px 10px;
-    border-radius: 24px;
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, var(--shadow-alpha));
+    position: relative;
+    z-index: 10;
 }
 
-/* Кнопка Темы */
 .theme-btn {
     position: absolute;
-    top: 0;
-    right: 10px;
-    width: 40px;
-    height: 40px;
+    top: 25px;
+    right: 25px;
+    width: 42px;
+    height: 42px;
     border-radius: 50%;
     background: var(--btn-toggle-bg);
     border: 1px solid var(--card-border);
@@ -79,19 +96,20 @@ body {
     justify-content: center;
     align-items: center;
     font-size: 1.1rem;
-    z-index: 10;
-    transition: transform 0.2s ease, background-color 0.3s ease;
-}
-.theme-btn:hover {
-    transform: scale(1.1);
+    transition: all 0.3s ease;
 }
 
-/* Логотип */
+.theme-btn:hover {
+    transform: scale(1.08);
+    background: var(--text-main);
+    color: var(--bg-gradient);
+}
+
 .logo-wrapper {
     position: relative;
-    width: 130px;
-    height: 130px;
-    margin: 0 auto 24px auto;
+    width: 110px;
+    height: 110px;
+    margin: 0 auto 20px auto;
     cursor: pointer;
 }
 
@@ -100,129 +118,133 @@ body {
     height: 100%;
     border-radius: 50%;
     object-fit: cover;
-    object-position: center; 
     border: 3px solid var(--logo-border);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, var(--shadow-alpha));
-    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    z-index: 3;
     position: relative;
+    z-index: 2;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.logo-wrapper:hover .main-logo {
+    transform: scale(1.05) rotate(5deg);
 }
 
 .logo-glow {
     position: absolute;
-    top: -6px; left: -6px; right: -6px; bottom: -6px;
-    background: var(--logo-gradient);
+    top: 0; left: 0;
+    width: 100%; height: 100%;
     border-radius: 50%;
+    background: var(--logo-gradient);
+    filter: blur(15px);
+    opacity: 0.6;
     z-index: 1;
-    opacity: 0.5;
-    filter: blur(14px);
     transition: opacity 0.4s ease;
 }
 
-.logo-wrapper:hover .main-logo { transform: scale(1.05); }
-.logo-wrapper:hover .logo-glow { opacity: 0.9; }
+.logo-wrapper:hover .logo-glow {
+    opacity: 0.9;
+}
 
-/* Название проекта */
 .brand-title {
     font-family: 'Montserrat', sans-serif;
-    font-size: 1.8rem;
-    font-weight: 700;
-    letter-spacing: 2px;
+    font-weight: 800;
+    font-size: 1.85rem;
+    letter-spacing: -0.5px;
     margin-bottom: 35px;
-    color: var(--text-main);
-    text-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
-    animation: fadeInDown 0.8s ease forwards;
+    background: linear-gradient(135deg, var(--text-main) 30%, var(--text-muted) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
-.links-list {
+.links-container {
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 16px;
 }
 
-/* Кнопки-плашки */
 .link-item {
-    position: relative;
     display: flex;
     align-items: center;
-    background: var(--card-bg);
+    padding: 16px 20px;
+    background: rgba(255, 255, 255, 0.02);
     border: 1px solid var(--card-border);
-    padding: 14px 20px;
-    border-radius: 16px;
+    border-radius: 20px;
     text-decoration: none;
     color: var(--text-main);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-}
-
-.btn-text {
-    display: flex;
-    flex-direction: column;
-    text-align: left;
-    margin-left: 16px;
-}
-
-.main-txt {
-    font-size: 1.05rem;
-    font-weight: 500;
-    color: var(--text-main);
-}
-
-.sub-txt {
-    font-size: 0.8rem;
-    color: var(--text-muted);
-    margin-top: 2px;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
 }
 
 .icon {
-    font-size: 1.35rem;
-    width: 26px;
-    text-align: center;
-    color: var(--text-main);
+    font-size: 1.5rem;
+    width: 35px;
+    text-align: left;
+    color: var(--text-muted);
+    transition: color 0.25s ease;
+}
+
+.btn-text {
+    flex-grow: 1;
+    text-align: left;
+    padding-left: 5px;
+}
+
+.main-txt {
+    display: block;
+    font-weight: 500;
+    font-size: 0.95rem;
+    letter-spacing: -0.1px;
+    margin-bottom: 2px;
+}
+
+.sub-txt {
+    display: block;
+    font-size: 0.76rem;
+    color: var(--text-muted);
+    opacity: 0.65;
+    transition: all 0.25s ease;
 }
 
 .arrow {
-    margin-left: auto;
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     color: var(--text-muted);
-    opacity: 0.4;
-    transition: transform 0.3s ease, color 0.3s ease, opacity 0.3s ease;
+    opacity: 0.3;
+    transition: all 0.25s ease;
 }
 
-/* Ховеры с сочным свечением под бренд */
-.tg-channel:hover, .tg-admin:hover {
-    background: rgba(36, 161, 222, 0.25);
-    border-color: var(--tg-color);
-    box-shadow: 0 0 20px rgba(36, 161, 222, 0.45);
+/* Эффекты ховеров для плашек */
+.tg-link:hover {
+    background: rgba(36, 161, 222, 0.1);
+    border-color: rgba(36, 161, 222, 0.4);
+    box-shadow: 0 0 20px rgba(36, 161, 222, 0.25);
 }
-.tg-channel:hover .icon, .tg-admin:hover .icon,
-.tg-channel:hover .main-txt, .tg-admin:hover .main-txt { color: var(--tg-color); }
+.tg-link:hover .icon, .tg-link:hover .main-txt { color: var(--tg-color); }
 
 .vk-link:hover {
-    background: rgba(0, 119, 255, 0.25);
-    border-color: var(--vk-color);
-    box-shadow: 0 0 20px rgba(0, 119, 255, 0.45);
+    background: rgba(0, 119, 255, 0.1);
+    border-color: rgba(0, 119, 255, 0.4);
+    box-shadow: 0 0 20px rgba(0, 119, 255, 0.25);
 }
 .vk-link:hover .icon, .vk-link:hover .main-txt { color: var(--vk-color); }
 
 .wa-link:hover {
-    background: rgba(37, 211, 102, 0.25);
-    border-color: var(--wa-color);
-    box-shadow: 0 0 20px rgba(37, 211, 102, 0.45);
+    background: rgba(37, 211, 102, 0.1);
+    border-color: rgba(37, 211, 102, 0.4);
+    box-shadow: 0 0 20px rgba(37, 211, 102, 0.25);
 }
 .wa-link:hover .icon, .wa-link:hover .main-txt { color: var(--wa-color); }
 
 .insta-link:hover {
-    background: linear-gradient(45deg, rgba(240,148,51,0.15), rgba(188,24,136,0.2));
-    border-color: #dc2743;
-    box-shadow: 0 0 20px rgba(220, 39, 67, 0.45);
+    background: rgba(241, 91, 36, 0.1);
+    border-color: rgba(241, 91, 36, 0.4);
+    box-shadow: 0 0 20px rgba(241, 91, 36, 0.25);
 }
-.insta-link:hover .icon, .insta-link:hover .main-txt { color: #dc2743; }
+.insta-link:hover .icon, .insta-link:hover .main-txt { color: var(--insta-color); }
 
 .email-link:hover {
-    background: rgba(126, 139, 155, 0.2);
+    background: rgba(255, 255, 255, 0.08);
     border-color: var(--text-main);
-    box-shadow: 0 0 15px rgba(126, 139, 155, 0.3);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.15);
 }
 
 .link-item:hover { transform: translateY(-3px); }
@@ -240,7 +262,7 @@ body {
     margin-top: 45px;
     font-size: 0.75rem;
     color: var(--text-muted);
-    opacity: 0.5;
+    opacity: 0.8;
     letter-spacing: 0.5px;
 }
 
@@ -254,19 +276,272 @@ body {
 
 .particle {
     position: absolute;
-    background: linear-gradient(135deg, #631a35, #2a5298);
-    border-radius: 2px;
+    width: 4px;
+    height: 12px;
+    background: linear-gradient(to bottom, #ffffff, rgba(255,255,255,0));
+    border-radius: 50%;
+    pointer-events: none;
     opacity: 0.8;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes ripple-effect {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+/* ==========================================================================
+   СТИЛИ ДЛЯ ИИ-ЧАТА (НОВЫЙ БЛОК)
+   ========================================================================== */
+
+.chat-toggle-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: var(--chat-btn-bg);
+    border: none;
+    color: #ffffff;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.chat-toggle-btn:hover {
+    transform: scale(1.1) rotate(10deg);
+    box-shadow: 0 12px 30px rgba(30, 60, 114, 0.4);
+}
+
+.chat-window {
+    position: fixed;
+    bottom: 105px;
+    right: 30px;
+    width: 360px;
+    height: 480px;
+    background: var(--chat-window-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 24px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+    z-index: 99;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    transition: all 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+    transform-origin: bottom right;
+}
+
+.chat-window.hidden {
+    opacity: 0;
+    transform: scale(0.8) translateY(30px);
     pointer-events: none;
 }
 
-@keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
-@keyframes fadeInDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+.chat-header {
+    padding: 16px 20px;
+    background: rgba(0,0,0,0.2);
+    border-bottom: 1px solid var(--card-border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
-@media (max-width: 375px) {
-    .main-txt { font-size: 0.95rem; }
-    .sub-txt { font-size: 0.75rem; }
-    .icon { font-size: 1.2rem; }
-    .logo-wrapper { width: 115px; height: 115px; }
-    .brand-title { font-size: 1.4rem; }
+.chat-header-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.chat-header-info i {
+    font-size: 1.4rem;
+    color: #24A1DE;
+}
+
+.ai-icon-glow {
+    animation: pulseGlow 2s infinite ease-in-out;
+}
+
+.chat-header-info h4 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+.chat-header-info span {
+    display: block;
+    font-size: 0.72rem;
+    color: var(--text-muted);
+}
+
+.chat-close-btn {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-size: 1.6rem;
+    cursor: pointer;
+    opacity: 0.6;
+    transition: opacity 0.2s;
+}
+
+.chat-close-btn:hover {
+    opacity: 1;
+    color: var(--text-main);
+}
+
+.chat-messages {
+    flex-grow: 1;
+    padding: 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Кастомизация скроллбара чата */
+.chat-messages::-webkit-scrollbar {
+    width: 5px;
+}
+.chat-messages::-webkit-scrollbar-track {
+    background: transparent;
+}
+.chat-messages::-webkit-scrollbar-thumb {
+    background: var(--card-border);
+    border-radius: 10px;
+}
+
+.msg {
+    max-width: 85%;
+    padding: 12px 16px;
+    border-radius: 18px;
+    font-size: 0.84rem;
+    line-height: 1.4;
+    word-wrap: break-word;
+    animation: chatMessageFade 0.3s ease forwards;
+}
+
+.bot-msg {
+    background: var(--msg-bot-bg);
+    color: var(--text-main);
+    align-self: flex-start;
+    border-bottom-left-radius: 4px;
+    border: 1px solid var(--card-border);
+}
+
+.user-msg {
+    background: var(--msg-user-bg);
+    color: var(--text-main);
+    align-self: flex-end;
+    border-bottom-right-radius: 4px;
+}
+
+.chat-footer-input {
+    padding: 14px 16px;
+    background: rgba(0,0,0,0.1);
+    border-top: 1px solid var(--card-border);
+    display: flex;
+    gap: 10px;
+}
+
+.chat-footer-input input {
+    flex-grow: 1;
+    background: rgba(0,0,0,0.2);
+    border: 1px solid var(--card-border);
+    border-radius: 14px;
+    padding: 10px 14px;
+    color: var(--text-main);
+    font-family: inherit;
+    font-size: 0.85rem;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.chat-footer-input input:focus {
+    border-color: rgba(30, 60, 114, 0.8);
+}
+
+.chat-footer-input button {
+    background: var(--chat-btn-bg);
+    border: none;
+    color: #ffffff;
+    width: 38px;
+    height: 38px;
+    border-radius: 12px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.95rem;
+    transition: transform 0.2s;
+}
+
+.chat-footer-input button:hover {
+    transform: scale(1.05);
+}
+
+/* Индикатор печати бота */
+.typing-indicator {
+    display: flex;
+    gap: 4px;
+    padding: 4px 8px;
+    align-items: center;
+    height: 20px;
+}
+
+.typing-indicator span {
+    width: 6px;
+    height: 6px;
+    background: var(--text-muted);
+    border-radius: 50%;
+    animation: typingBlink 1.4s infinite both;
+    opacity: 0.4;
+}
+
+.typing-indicator span:nth-child(2) { animation-delay: .2s; }
+.typing-indicator span:nth-child(3) { animation-delay: .4s; }
+
+@keyframes chatMessageFade {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulseGlow {
+    0% { filter: drop-shadow(0 0 2px rgba(36,161,222,0.4)); }
+    50% { filter: drop-shadow(0 0 8px rgba(36,161,222,0.8)); }
+    100% { filter: drop-shadow(0 0 2px rgba(36,161,222,0.4)); }
+}
+
+@keyframes typingBlink {
+    0% { opacity: .2; transform: scale(0.9); }
+    20% { opacity: 1; transform: scale(1.1); }
+    100% { opacity: .2; transform: scale(0.9); }
+}
+
+/* Адаптивность виджета для мобилок */
+@media (max-width: 480px) {
+    .chat-window {
+        width: calc(100% - 40px);
+        right: 20px;
+        left: 20px;
+        bottom: 95px;
+    }
+    .chat-toggle-btn {
+        bottom: 20px;
+        right: 20px;
+    }
 }
