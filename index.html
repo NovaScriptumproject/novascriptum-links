@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="icon" type="image/png" href="favicon.png">
+    
+    <title>NovaScriptum</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@400;500;600&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <div id="particle-container"></div>
+
+    <div class="card-container">
+        <button id="theme-toggle" class="theme-btn" aria-label="Переключить тему">
+            <i class="fas fa-moon"></i>
+        </button>
+
+        <div class="logo-wrapper" id="logo-trigger">
+            <img src="logo.png" alt="NovaScriptum Logo" class="main-logo">
+            <div class="logo-glow"></div>
+        </div>
+
+        <h1 class="brand-title">NovaScriptum</h1>
+
+        <div class="links-list">
+            
+            <a href="https://t.me/NovaScriptum" target="_blank" class="link-item btn-animate tg-channel" style="--delay: 1;">
+                <i class="fab fa-telegram-plane icon"></i>
+                <div class="btn-text">
+                    <span class="main-txt">Telegram-канал</span>
+                    <span class="sub-txt">Основной ресурс и новости</span>
+                </div>
+                <i class="fas fa-chevron-right arrow"></i>
+            </a>
+
+            <a href="https://vk.ru/novascriptum" target="_blank" class="link-item btn-animate vk-link" style="--delay: 2;">
+                <i class="fab fa-vk icon"></i>
+                <div class="btn-text">
+                    <span class="main-txt">Сообщество VK</span>
+                    <span class="sub-txt">Отзывы и полезные статьи</span>
+                </div>
+                <i class="fas fa-chevron-right arrow"></i>
+            </a>
+
+            <a href="https://instagram.com/novascriptum_admin" target="_blank" class="link-item btn-animate insta-link" style="--delay: 3;">
+                <i class="fab fa-instagram icon"></i>
+                <div class="btn-text">
+                    <span class="main-txt">Наш Instagram</span>
+                    <span class="sub-txt">Профиль и жизнь проекта</span>
+                </div>
+                <i class="fas fa-chevron-right arrow"></i>
+            </a>
+
+            <a href="https://t.me/NovaScriptum_admin" target="_blank" class="link-item btn-animate tg-admin" style="--delay: 4;">
+                <i class="fas fa-user-check icon"></i>
+                <div class="btn-text">
+                    <span class="main-txt">Менеджер Telegram</span>
+                    <span class="sub-txt">Заказ работ и вопросы</span>
+                </div>
+                <i class="fas fa-chevron-right arrow"></i>
+            </a>
+
+            <a href="https://wa.me/79933079373" target="_blank" class="link-item btn-animate wa-link" style="--delay: 5;">
+                <i class="fab fa-whatsapp icon"></i>
+                <div class="btn-text">
+                    <span class="main-txt">Чат WhatsApp</span>
+                    <span class="sub-txt">Быстрая связь по номеру</span>
+                </div>
+                <i class="fas fa-chevron-right arrow"></i>
+            </a>
+
+            <a href="mailto:novascriptum@vk.com?subject=Заказ%20работы%20/%20Консультация%20[NovaScriptum]&body=Здравствуйте!%20Хочу%20узнать%20стоимость%20и%20заказать%20работу.%0A%0AВыберите%20тип%20работы%20(оставьте%20нужное):%0A-%20Курсовая%20работа%0A-%20Дипломная%20работа%0A-%20Реферат%20/%20Эссе%0A-%20Презентация%20/%20Доклад%0A%0AТема%20работы:%20%0AСроки%20сдачи:%20" class="link-item btn-animate email-link" style="--delay: 6;">
+                <i class="fas fa-envelope icon"></i>
+                <div class="btn-text">
+                    <span class="main-txt">Почта Email</span>
+                    <span class="sub-txt">Шаблон заказа в один клик</span>
+                </div>
+                <i class="fas fa-chevron-right arrow"></i>
+            </a>
+            
+        </div>
+
+        <div class="footer">
+            <p>© 2026 NovaScriptum</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,272 @@
+/* Переменные для Ночной темы (по умолчанию) */
+:root {
+    --bg-gradient: radial-gradient(circle at center, #360f1b 0%, #080b11 85%);
+    --card-bg: rgba(255, 255, 255, 0.03);
+    --card-border: rgba(255, 255, 255, 0.08);
+    --text-main: #ffffff;
+    --text-muted: #7e8b9b;
+    --btn-toggle-bg: rgba(255, 255, 255, 0.05);
+    --btn-toggle-color: #ffffff;
+    --logo-border: #1a2b4c;
+    --shadow-alpha: 0.7;
+    
+    /* Цвета брендов для ховера */
+    --tg-color: #24A1DE;
+    --vk-color: #0077FF;
+    --wa-color: #25D366;
+    --mail-color: #ffffff;
+    --logo-gradient: linear-gradient(135deg, #1e3c72 0%, #631a35 100%);
+}
+
+/* Переменные для Дневной темы */
+[data-theme="light"] {
+    --bg-gradient: radial-gradient(circle at center, #f4ebee 0%, #eef2f7 85%);
+    --card-bg: rgba(0, 0, 0, 0.03);
+    --card-border: rgba(0, 0, 0, 0.08);
+    --text-main: #1e2530;
+    --text-muted: #626d7a;
+    --btn-toggle-bg: rgba(0, 0, 0, 0.05);
+    --btn-toggle-color: #1e2530;
+    --logo-border: #d1d9e6;
+    --shadow-alpha: 0.15;
+    --mail-color: #1e2530;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+body {
+    background: var(--bg-gradient);
+    background-attachment: fixed;
+    color: var(--text-main);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow-x: hidden;
+    padding: 30px 16px;
+    font-family: 'Geologica', sans-serif;
+}
+
+.card-container {
+    position: relative;
+    width: 100%;
+    max-width: 420px;
+    text-align: center;
+    z-index: 2;
+    background: rgba(255, 255, 255, 0.01);
+    padding: 30px 10px;
+    border-radius: 24px;
+}
+
+/* Кнопка Темы */
+.theme-btn {
+    position: absolute;
+    top: 0;
+    right: 10px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--btn-toggle-bg);
+    border: 1px solid var(--card-border);
+    color: var(--btn-toggle-color);
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.1rem;
+    z-index: 10;
+    transition: transform 0.2s ease, background-color 0.3s ease;
+}
+.theme-btn:hover {
+    transform: scale(1.1);
+}
+
+/* Логотип */
+.logo-wrapper {
+    position: relative;
+    width: 130px;
+    height: 130px;
+    margin: 0 auto 24px auto;
+    cursor: pointer;
+}
+
+.main-logo {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center; 
+    border: 3px solid var(--logo-border);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, var(--shadow-alpha));
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 3;
+    position: relative;
+}
+
+.logo-glow {
+    position: absolute;
+    top: -6px; left: -6px; right: -6px; bottom: -6px;
+    background: var(--logo-gradient);
+    border-radius: 50%;
+    z-index: 1;
+    opacity: 0.5;
+    filter: blur(14px);
+    transition: opacity 0.4s ease;
+}
+
+.logo-wrapper:hover .main-logo { transform: scale(1.05); }
+.logo-wrapper:hover .logo-glow { opacity: 0.9; }
+
+/* Название проекта */
+.brand-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 35px;
+    color: var(--text-main);
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+    animation: fadeInDown 0.8s ease forwards;
+}
+
+.links-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+/* Кнопки-плашки */
+.link-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    padding: 14px 20px;
+    border-radius: 16px;
+    text-decoration: none;
+    color: var(--text-main);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+.btn-text {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    margin-left: 16px;
+}
+
+.main-txt {
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: var(--text-main);
+}
+
+.sub-txt {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-top: 2px;
+}
+
+.icon {
+    font-size: 1.35rem;
+    width: 26px;
+    text-align: center;
+    color: var(--text-main);
+}
+
+.arrow {
+    margin-left: auto;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    opacity: 0.4;
+    transition: transform 0.3s ease, color 0.3s ease, opacity 0.3s ease;
+}
+
+/* Ховеры с сочным свечением под бренд */
+.tg-channel:hover, .tg-admin:hover {
+    background: rgba(36, 161, 222, 0.25);
+    border-color: var(--tg-color);
+    box-shadow: 0 0 20px rgba(36, 161, 222, 0.45);
+}
+.tg-channel:hover .icon, .tg-admin:hover .icon,
+.tg-channel:hover .main-txt, .tg-admin:hover .main-txt { color: var(--tg-color); }
+
+.vk-link:hover {
+    background: rgba(0, 119, 255, 0.25);
+    border-color: var(--vk-color);
+    box-shadow: 0 0 20px rgba(0, 119, 255, 0.45);
+}
+.vk-link:hover .icon, .vk-link:hover .main-txt { color: var(--vk-color); }
+
+.wa-link:hover {
+    background: rgba(37, 211, 102, 0.25);
+    border-color: var(--wa-color);
+    box-shadow: 0 0 20px rgba(37, 211, 102, 0.45);
+}
+.wa-link:hover .icon, .wa-link:hover .main-txt { color: var(--wa-color); }
+
+.insta-link:hover {
+    background: linear-gradient(45deg, rgba(240,148,51,0.15), rgba(188,24,136,0.2));
+    border-color: #dc2743;
+    box-shadow: 0 0 20px rgba(220, 39, 67, 0.45);
+}
+.insta-link:hover .icon, .insta-link:hover .main-txt { color: #dc2743; }
+
+.email-link:hover {
+    background: rgba(126, 139, 155, 0.2);
+    border-color: var(--text-main);
+    box-shadow: 0 0 15px rgba(126, 139, 155, 0.3);
+}
+
+.link-item:hover { transform: translateY(-3px); }
+.link-item:hover .arrow { transform: translateX(4px); color: var(--text-main); opacity: 1; }
+.link-item:hover .sub-txt { color: var(--text-main); opacity: 0.8; }
+
+.btn-animate {
+    opacity: 0;
+    transform: translateY(15px);
+    animation: fadeInUp 0.5s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+    animation-delay: calc(var(--delay) * 0.08s + 0.15s);
+}
+
+.footer {
+    margin-top: 45px;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    opacity: 0.5;
+    letter-spacing: 0.5px;
+}
+
+#particle-container {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.particle {
+    position: absolute;
+    background: linear-gradient(135deg, #631a35, #2a5298);
+    border-radius: 2px;
+    opacity: 0.8;
+    pointer-events: none;
+}
+
+@keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeInDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+
+@media (max-width: 375px) {
+    .main-txt { font-size: 0.95rem; }
+    .sub-txt { font-size: 0.75rem; }
+    .icon { font-size: 1.2rem; }
+    .logo-wrapper { width: 115px; height: 115px; }
+    .brand-title { font-size: 1.4rem; }
+}
