@@ -35,7 +35,7 @@
 ### Наше медиа-пространство:
 * **📢 Telegram-канал:** [NovaScriptum](https://t.me/NovaScriptum) — *основной ресурс проекта, публикации и отзывы*
 * **👥 Сообщество ВКонтакте:** [vk.ru/novascriptum](https://vk.ru/novascriptum) — *полезные материалы, статьи и кейсы*
-* **📸 Профиль Instagram:** [@novascriptum_admin](https://instagram.com/NovaScriptum_official — *официальный блог*
+* **📸 Профиль Instagram:** [@NovaScriptum_official](https://instagram.com/NovaScriptum_official — *официальный блог*
 
 ---
 
