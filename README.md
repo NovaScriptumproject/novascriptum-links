@@ -1,7 +1,7 @@
 <div align="center">
   <img src="logo.png" alt="NovaScriptum Logo" width="120" style="border-radius: 50%; border: 3px solid #1a2b4c;">
 
-  # ✒️ NovaScriptum Links
+  # ✒️ NovaScriptum
 
   ### Профессиональный академический консалтинг и помощь студентам
 
@@ -30,7 +30,7 @@
 
 * **💬 Менеджер Telegram (Заказы):** [@NovaScriptum_admin](https://t.me/NovaScriptum_admin) — *расчет стоимости, прием ТЗ и консультации*
 * **📱 Чат WhatsApp:** [+7 (993) 307-93-73](https://wa.me/79933079373) — *быстрая клиентская поддержка*
-* **📩 Наша почта:** [novascriptum@vk.com](mailto:novascriptum@vk.com) — *для официальных запросов*
+* **📩 Наша почта:** [evgenyzaratuchenko@gmail.com](mailto:evgenyzaratuchenko@gmail.com) — *для официальных запросов*
 
 ### Наше медиа-пространство:
 * **📢 Telegram-канал:** [NovaScriptum](https://t.me/NovaScriptum) — *основной ресурс проекта, публикации и отзывы*
