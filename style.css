@@ -16,6 +16,7 @@
     /* Фирменный градиент Instagram */
     --insta-gradient: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
     --logo-gradient: linear-gradient(135deg, #1e3c72 0%, #631a35 100%);
+    --particle-color: #ffffff;
 }
 
 [data-theme="light"] {
@@ -29,6 +30,7 @@
     --logo-border: #d2dae2;
     --shadow-alpha: 0.15;
     --mail-color: #1c2434;
+    --particle-color: #1c2434;
 }
 
 * {
@@ -86,7 +88,7 @@ body {
 .theme-btn:hover {
     transform: scale(1.08);
     background: var(--text-main);
-    color: var(--bg-gradient);
+    color: var(--card-bg);
 }
 
 .logo-wrapper {
@@ -271,10 +273,30 @@ body {
     position: absolute;
     width: 4px;
     height: 12px;
-    background: linear-gradient(to bottom, #ffffff, rgba(255,255,255,0));
+    background: linear-gradient(to bottom, var(--particle-color, #ffffff), transparent);
     border-radius: 50%;
     pointer-events: none;
     opacity: 0.8;
+}
+
+.footer a.oferta-link {
+    color: var(--text-muted);
+    text-decoration: underline;
+    opacity: 0.6;
+    transition: opacity 0.2s, color 0.2s;
+}
+
+.footer a.oferta-link:hover {
+    opacity: 1;
+    color: var(--text-main);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
 }
 
 @keyframes fadeInUp {
