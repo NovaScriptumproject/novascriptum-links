@@ -17,6 +17,7 @@
     --insta-gradient: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
     --logo-gradient: linear-gradient(135deg, #1e3c72 0%, #631a35 100%);
     --particle-color: #ffffff;
+    --btn-hover-icon: #1c2434;
 }
 
 [data-theme="light"] {
@@ -31,6 +32,7 @@
     --shadow-alpha: 0.15;
     --mail-color: #1c2434;
     --particle-color: #1c2434;
+    --btn-hover-icon: #ffffff;
 }
 
 * {
@@ -88,7 +90,7 @@ body {
 .theme-btn:hover {
     transform: scale(1.08);
     background: var(--text-main);
-    color: var(--card-bg);
+    color: var(--btn-hover-icon);
 }
 
 .logo-wrapper {
