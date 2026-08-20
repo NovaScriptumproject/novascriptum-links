@@ -1,88 +1,146 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const logo = document.getElementById("logo-trigger");
-    const container = document.getElementById("particle-container");
-    const themeToggle = document.getElementById("theme-toggle");
-    const themeIcon = themeToggle.querySelector("i");
+document.addEventListener('DOMContentLoaded', () => {
 
-    const currentTheme = localStorage.getItem("theme") || "dark";
-    if (currentTheme === "light") {
-        document.documentElement.setAttribute("data-theme", "light");
-        themeIcon.className = "fas fa-sun";
+    /* ---- Theme Toggle ---- */
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeIcon = themeToggle.querySelector('i');
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+
+    function applyTheme(theme) {
+        if (theme === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+            themeIcon.className = 'fas fa-sun';
+        } else {
+            document.documentElement.removeAttribute('data-theme');
+            themeIcon.className = 'fas fa-moon';
+        }
     }
 
-    themeToggle.addEventListener("click", () => {
-        let theme = "dark";
-        if (document.documentElement.getAttribute("data-theme") !== "light") {
-            document.documentElement.setAttribute("data-theme", "light");
-            themeIcon.className = "fas fa-sun";
-            theme = "light";
-        } else {
-            document.documentElement.removeAttribute("data-theme");
-            themeIcon.className = "fas fa-moon";
-            theme = "dark";
-        }
-        localStorage.setItem("theme", theme);
+    applyTheme(savedTheme);
+
+    themeToggle.addEventListener('click', () => {
+        const current = document.documentElement.getAttribute('data-theme');
+        const next = current === 'light' ? 'dark' : 'light';
+        applyTheme(next);
+        localStorage.setItem('theme', next);
     });
 
-    function createParticles() {
-        const rect = logo.getBoundingClientRect();
-        const startX = rect.left + rect.width * 0.85;
-        const startY = rect.top + rect.height * 0.25;
+    /* ---- Sticky Nav ---- */
+    const nav = document.getElementById('nav');
 
-        for (let i = 0; i < 15; i++) {
-            const particle = document.createElement("div");
-            particle.classList.add("particle");
-
-            const size = Math.random() * 4 + 2;
-            particle.style.width = `${size}px`;
-            particle.style.height = `${size * 3}px`;
-
-            container.appendChild(particle);
-
-            const angle = Math.random() * Math.PI * 2;
-            const velocity = Math.random() * 90 + 40;
-            const destinationX = Math.cos(angle) * velocity;
-            const destinationY = Math.sin(angle) * velocity;
-
-            const animation = particle.animate([
-                { transform: `translate(${startX}px, ${startY}px) scale(1)`, opacity: 0.9 },
-                { transform: `translate(${startX + destinationX}px, ${startY + destinationY}px) scale(0)`, opacity: 0 }
-            ], {
-                duration: Math.random() * 600 + 400,
-                easing: 'cubic-bezier(0.1, 0.8, 0.3, 1)',
-            });
-
-            animation.onfinish = () => {
-                particle.remove();
-            };
+    function handleNavScroll() {
+        if (window.scrollY > 40) {
+            nav.classList.add('scrolled');
+        } else {
+            nav.classList.remove('scrolled');
         }
     }
 
-    logo.addEventListener("mouseenter", createParticles);
-    logo.addEventListener("click", createParticles);
+    window.addEventListener('scroll', handleNavScroll, { passive: true });
+    handleNavScroll();
 
-    const buttons = document.querySelectorAll(".link-item");
-    buttons.forEach(button => {
-        button.addEventListener("click", function(e) {
-            const circle = document.createElement("span");
-            const diameter = Math.max(this.clientWidth, this.clientHeight);
-            const radius = diameter / 2;
+    /* ---- Mobile Menu ---- */
+    const navToggle = document.getElementById('nav-toggle');
+    const navLinks = document.getElementById('nav-links');
+    const navBackdrop = document.getElementById('nav-backdrop');
 
-            circle.style.width = circle.style.height = `${diameter}px`;
-            circle.style.left = `${e.clientX - this.getBoundingClientRect().left - radius}px`;
-            circle.style.top = `${e.clientY - this.getBoundingClientRect().top - radius}px`;
-            circle.style.position = "absolute";
-            circle.style.borderRadius = "50%";
-            circle.style.transform = "scale(0)";
-            circle.style.background = "rgba(255, 255, 255, 0.15)";
-            circle.style.animation = "ripple-effect 0.4s linear";
-            circle.style.pointerEvents = "none";
+    function openMenu() {
+        navToggle.classList.add('active');
+        navLinks.classList.add('open');
+        navBackdrop.classList.add('open');
+        document.body.style.overflow = 'hidden';
+    }
 
-            this.appendChild(circle);
+    function closeMenu() {
+        navToggle.classList.remove('active');
+        navLinks.classList.remove('open');
+        navBackdrop.classList.remove('open');
+        document.body.style.overflow = '';
+    }
 
-            setTimeout(() => {
-                circle.remove();
-            }, 400);
+    navToggle.addEventListener('click', () => {
+        navLinks.classList.contains('open') ? closeMenu() : openMenu();
+    });
+
+    navBackdrop.addEventListener('click', closeMenu);
+
+    navLinks.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', closeMenu);
+    });
+
+    /* ---- Scroll Reveal ---- */
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                revealObserver.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.08,
+        rootMargin: '0px 0px -40px 0px'
+    });
+
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    /* ---- Counter Animation ---- */
+    let countersAnimated = false;
+
+    function animateCounters() {
+        if (countersAnimated) return;
+        countersAnimated = true;
+
+        document.querySelectorAll('.stat-number').forEach(counter => {
+            const target = parseInt(counter.dataset.count, 10);
+            const duration = 1400;
+            const startTime = performance.now();
+
+            function tick(now) {
+                const elapsed = now - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                const eased = 1 - Math.pow(1 - progress, 3);
+                counter.textContent = Math.round(target * eased);
+
+                if (progress < 1) {
+                    requestAnimationFrame(tick);
+                }
+            }
+
+            requestAnimationFrame(tick);
+        });
+    }
+
+    const statsSection = document.getElementById('stats');
+    if (statsSection) {
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounters();
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.3 });
+
+        statsObserver.observe(statsSection);
+    }
+
+    /* ---- Smooth Scroll for Anchor Links ---- */
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', (e) => {
+            const targetId = anchor.getAttribute('href');
+            if (targetId === '#') return;
+
+            const target = document.querySelector(targetId);
+            if (target) {
+                e.preventDefault();
+                const navHeight = nav.offsetHeight;
+                const targetPos = target.getBoundingClientRect().top + window.scrollY - navHeight - 16;
+
+                window.scrollTo({
+                    top: targetPos,
+                    behavior: 'smooth'
+                });
+            }
         });
     });
+
 });

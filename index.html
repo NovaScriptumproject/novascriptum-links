@@ -1,106 +1,310 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="NovaScriptum — профессиональный академический консалтинг и помощь студентам в написании академических работ">
-    <meta name="theme-color" content="#080b11">
-    <meta property="og:title" content="NovaScriptum">
-    <meta property="og:description" content="Профессиональный академический консалтинг и помощь студентам">
+    <meta name="description" content="NovaScriptum — помощь студентам с академическими работами: курсовые, дипломные, рефераты, эссе, презентации на заказ. Пишем работы любой сложности с гарантией сроков и конфиденциальности.">
+    <meta name="theme-color" content="#06080D">
+    <meta property="og:title" content="NovaScriptum — Помощь студентам с академическими работами">
+    <meta property="og:description" content="Помогаем студентам с курсовыми, дипломными, рефератами и эссе на заказ">
     <meta property="og:image" content="logo.png">
     <meta property="og:type" content="website">
-    
+
     <link rel="icon" type="image/png" href="favicon.png">
-    
-    <title>NovaScriptum</title>
-    
+    <title>NovaScriptum — Помощь с академическими работами</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@400;500;600&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.5.1/css/all.css">
+
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl0CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
 </head>
 <body>
 
-    <div id="particle-container"></div>
-
-    <main class="card-container">
-        <button id="theme-toggle" class="theme-btn" aria-label="Переключить тему">
-            <i class="fas fa-moon"></i>
-        </button>
-
-        <div class="logo-wrapper" id="logo-trigger">
-            <img src="logo.png" alt="NovaScriptum Logo" class="main-logo">
-            <div class="logo-glow"></div>
+    <nav class="nav" id="nav">
+        <div class="nav-inner container">
+            <a href="#" class="nav-logo">
+                <img src="logo.png" alt="NovaScriptum" class="nav-logo-img">
+                <span class="nav-logo-text">NovaScriptum</span>
+            </a>
+            <div class="nav-links" id="nav-links">
+                <a href="#services" class="nav-link">Услуги</a>
+                <a href="#process" class="nav-link">Процесс</a>
+                <a href="#guarantees" class="nav-link">Гарантии</a>
+                <a href="#contacts" class="nav-link">Контакты</a>
+            </div>
+            <div class="nav-actions">
+                <button id="theme-toggle" class="theme-btn" aria-label="Переключить тему">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <a href="https://t.me/NovaScriptum_admin" target="_blank" rel="noopener" class="nav-cta">                    Заказать работу</a>
+                <button class="nav-toggle" id="nav-toggle" aria-label="Меню">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
         </div>
+        <div class="nav-backdrop" id="nav-backdrop"></div>
+    </nav>
 
-        <h1 class="brand-title">NovaScriptum</h1>
-
-        <div class="links-container">
-            <a href="https://t.me/NovaScriptum" target="_blank" rel="noopener" class="link-item btn-animate tg-link" style="--delay: 3;">
-                <i class="fab fa-telegram icon"></i>
-                <div class="btn-text">
-                    <span class="main-txt">Telegram-канал</span>
-                    <span class="sub-txt">Основной ресурс, новости и отзывы</span>
-                </div>
-                <i class="fas fa-chevron-right arrow"></i>
-            </a>
-
-            <a href="https://vk.ru/novascriptum" target="_blank" rel="noopener" class="link-item btn-animate vk-link" style="--delay: 4;">
-                <i class="fab fa-vk icon"></i>
-                <div class="btn-text">
-                    <span class="main-txt">Сообщество ВКонтакте</span>
-                    <span class="sub-txt">Полезные материалы и кейсы</span>
-                </div>
-                <i class="fas fa-chevron-right arrow"></i>
-            </a>
-
-            <a href="https://instagram.com/NovaScriptum_official" target="_blank" rel="noopener" class="link-item btn-animate insta-link" style="--delay: 5;">
-                <i class="fab fa-instagram icon"></i>
-                <div class="btn-text">
-                    <span class="main-txt">Профиль Instagram</span>
-                    <span class="sub-txt">Официальный блог проекта</span>
-                </div>
-                <i class="fas fa-chevron-right arrow"></i>
-            </a>
-
-            <a href="https://t.me/NovaScriptum_admin" target="_blank" rel="noopener" class="link-item btn-animate tg-link" style="--delay: 6;">
-                <i class="fab fa-telegram icon"></i>
-                <div class="btn-text">
-                    <span class="main-txt">Менеджер в Telegram</span>
-                    <span class="sub-txt">Консультация и заказ работы</span>
-                </div>
-                <i class="fas fa-chevron-right arrow"></i>
-            </a>
-
-            <a href="https://wa.me/79933079373" target="_blank" rel="noopener" class="link-item btn-animate wa-link" style="--delay: 7;">
-                <i class="fab fa-whatsapp icon"></i>
-                <div class="btn-text">
-                    <span class="main-txt">Менеджер WhatsApp</span>
-                    <span class="sub-txt">Связь по номеру службы поддержки</span>
-                </div>
-                <i class="fas fa-chevron-right arrow"></i>
-            </a>
-
-            <a href="mailto:evgenyzaratuchenko@gmail.com?subject=%D0%97%D0%B0%D0%BA%D0%B0%D0%B7%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%8B%20%D0%B2%20NovaScriptum&body=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D0%BA%D0%B0%D0%B7%D0%B0%D1%82%D1%8C%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%83.%0A%0A%D0%92%D1%8B%D0%B1%D0%B5%D1%80%D0%B8%D1%82%D0%B5%20%D1%82%D0%B8%D0%BF%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%8B%20(%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D1%8C%D1%82%D0%B5%20%D0%BD%D1%83%D0%B6%D0%BD%D0%BE%D0%B5)%3A%0A-%20%D0%9A%D1%83%D1%80%D1%81%D0%BE%D0%B2%D0%B0%D1%8F%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%8B%0A-%20%D0%94%D0%B8%D0%BF%D0%BB%D0%BE%D0%BC%D0%BD%D0%B0%D1%8F%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%80%D0%B0%0A-%20%D0%A0%D0%B5%D1%84%D0%B5%D1%80%D0%B0%D1%82%20%2F%20%D0%AD%D1%81%D1%81%D0%B5%0A-%20%D0%94%D0%BE%D0%BA%D0%BB%D0%B0%D0%B4%20%2F%20%D0%9F%D1%80%D0%B5%D0%B7%D0%B5%D0%BD%D1%82%D0%B0%D1%86%D0%B8%D1%8F%0A%0A%D0%94%D0%B0%D0%BD%D0%BD%D1%8B%D0%B5%20%D0%B4%D0%BB%D1%8F%20%D0%B7%D0%B0%D0%BA%D0%B0%D0%B7%D0%B0%3A%0A-%20%D0%9D%D0%B0%D0%B8%D0%BC%D0%B5%D0%BD%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5%20%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D0%BE%D0%B3%D0%BE%20%D0%B7%D0%B0%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D1%8F%3A%20%0A-%20%D0%A2%D0%B5%D0%BC%D0%B0%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%8B%3A%20%0A-%20%D0%9C%D0%BE%D1%91%20%D0%A4%D0%98%D0%9E%3A%20%0A-%20%D0%A1%D1%80%D0%BE%D0%BA%D0%B8%20%D1%81%D0%B4%D0%B0%D1%87%D0%B8%3A%20
-" class="link-item btn-animate email-link" style="--delay: 8;">
-                <i class="fas fa-envelope icon"></i>
-                <div class="btn-text">
-                    <span class="main-txt">Написать на Email</span>
-                    <span class="sub-txt">Для официальных запросов и крупных ТЗ</span>
-                </div>
-                <i class="fas fa-chevron-right arrow"></i>
-            </a>
+    <section class="hero">
+        <div class="hero-bg">
+            <div class="hero-glow"></div>
+            <div class="hero-grid"></div>
         </div>
-
-        <div class="footer">
-            <p>© 2026 NovaScriptum</p>
-            <p style="margin-top: 10px;">
-                <a href="oferta.txt" target="_blank" rel="noopener" class="oferta-link">Публичная оферта</a>
-            </p>
+        <div class="hero-content container">
+            <div class="hero-badge reveal">Помощь с академическими работами</div>
+            <h1 class="hero-title reveal">
+                <span class="hero-title-nova">Nova</span><span class="hero-title-scriptum">Scriptum</span>
+            </h1>
+            <div class="hero-line reveal"></div>
+            <p class="hero-subtitle reveal">Пишем курсовые, дипломные,<br>рефераты и эссе на заказ</p>
+            <p class="hero-desc reveal">Помогаем студентам с академическими работами любой сложности. Курсовые, дипломные, магистерские, рефераты, эссе, доклады и презентации. Индивидуальный подход, соблюдение сроков, полная конфиденциальность.</p>
+            <div class="hero-actions reveal">
+                <a href="https://t.me/NovaScriptum_admin" target="_blank" rel="noopener" class="btn btn-primary">
+                    <i class="fab fa-telegram"></i>
+                    Помощь с работой
+                </a>
+                <a href="#services" class="btn btn-secondary">
+                    Узнать больше
+                </a>
+            </div>
         </div>
-    </main>
+        <a href="#stats" class="hero-scroll reveal" aria-label="Прокрутить вниз">
+            <i class="fas fa-chevron-down"></i>
+        </a>
+    </section>
+
+    <section class="stats" id="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item reveal">
+                    <div class="stat-value"><span class="stat-number" data-count="500">0</span><span class="stat-suffix">+</span></div>
+                    <span class="stat-label">Академических работ</span>
+                </div>
+                <div class="stat-item reveal">
+                    <div class="stat-value"><span class="stat-number" data-count="3">0</span><span class="stat-suffix">+</span></div>
+                    <span class="stat-label">Года опыта</span>
+                </div>
+                <div class="stat-item reveal">
+                    <div class="stat-value"><span class="stat-number" data-count="98">0</span><span class="stat-suffix">%</span></div>
+                    <span class="stat-label">Довольных клиентов</span>
+                </div>
+                <div class="stat-item reveal">
+                    <div class="stat-value"><span class="stat-number" data-count="24">0</span><span class="stat-suffix">/7</span></div>
+                    <span class="stat-label">Поддержка</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">Что мы делаем</span>
+                <h2 class="section-title">Наши услуги</h2>
+                <p class="section-desc">Помогаем студентам решать задачи любой сложности — от реферата до дипломной работы</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card reveal">
+                    <div class="service-icon"><i class="fas fa-book-open"></i></div>
+                    <h3 class="service-title">Курсовые работы</h3>
+                    <p class="service-desc">Пишем курсовые на заказ по всем направлениям с учётом методических требований вашего вуза</p>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-icon"><i class="fas fa-scroll"></i></div>
+                    <h3 class="service-title">Дипломные работы</h3>
+                    <p class="service-desc">Дипломные проекты, ВКР и магистерские диссертации на заказ с поэтапной сдачей</p>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-icon"><i class="fas fa-file-lines"></i></div>
+                    <h3 class="service-title">Рефераты и эссе</h3>
+                    <p class="service-desc">Рефераты, эссе и аналитические работы любой тематики на заказ</p>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-icon"><i class="fas fa-chalkboard-user"></i></div>
+                    <h3 class="service-title">Доклады и презентации</h3>
+                    <p class="service-desc">Готовые доклады и презентации для семинаров, конференций и защит</p>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-icon"><i class="fas fa-magnifying-glass-chart"></i></div>
+                    <h3 class="service-title">Научные исследования</h3>
+                    <p class="service-desc">Подбор литературы, анализ источников, подготовка научных материалов</p>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-icon"><i class="fas fa-comments"></i></div>
+                    <h3 class="service-title">Консультации</h3>
+                    <p class="service-desc">Помогаем на всех этапах — от выбора темы до финальной доработки</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="process" id="process">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">Простой процесс</span>
+                <h2 class="section-title">Как мы работаем</h2>
+                <p class="section-desc">Три простых шага от заявки до готового результата</p>
+            </div>
+            <div class="process-grid">
+                <div class="process-step reveal">
+                    <div class="process-number">01</div>
+                    <div class="process-icon"><i class="fas fa-paper-plane"></i></div>
+                    <h3 class="process-title">Оставьте заявку</h3>
+                    <p class="process-desc">Напишите нам в Telegram, WhatsApp или на почту. Опишите тему работы, требования и сроки</p>
+                </div>
+                <div class="process-connector reveal"><i class="fas fa-arrow-right"></i></div>
+                <div class="process-step reveal">
+                    <div class="process-number">02</div>
+                    <div class="process-icon"><i class="fas fa-handshake"></i></div>
+                    <h3 class="process-title">Обсудим детали</h3>
+                    <p class="process-desc">Согласуем объём, стоимость и сроки. Вы предоставите методические требования и ТЗ</p>
+                </div>
+                <div class="process-connector reveal"><i class="fas fa-arrow-right"></i></div>
+                <div class="process-step reveal">
+                    <div class="process-number">03</div>
+                    <div class="process-icon"><i class="fas fa-check-double"></i></div>
+                    <h3 class="process-title">Получите результат</h3>
+                    <p class="process-desc">Готовая работа сдаётся в срок. Возможны бесплатные корректировки по вашему ТЗ</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="guarantees" id="guarantees">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">Нам доверяют</span>
+                <h2 class="section-title">Наши гарантии</h2>
+                <p class="section-desc">Принципы, которые стоят за каждым нашим проектом</p>
+            </div>
+            <div class="guarantees-grid">
+                <div class="guarantee-card reveal">
+                    <div class="guarantee-icon"><i class="fas fa-shield-halved"></i></div>
+                    <h3 class="guarantee-title">Конфиденциальность</h3>
+                    <p class="guarantee-desc">Полная анонимность. Ваши данные защищены и не передаются третьим лицам</p>
+                </div>
+                <div class="guarantee-card reveal">
+                    <div class="guarantee-icon"><i class="fas fa-clock"></i></div>
+                    <h3 class="guarantee-title">Соблюдение сроков</h3>
+                    <p class="guarantee-desc">Работа сдаётся в согласованные сроки. Срочные заказы — по договорённости</p>
+                </div>
+                <div class="guarantee-card reveal">
+                    <div class="guarantee-icon"><i class="fas fa-user-tie"></i></div>
+                    <h3 class="guarantee-title">Профессионализм</h3>
+                    <p class="guarantee-desc">Каждый проект выполняется профильным специалистом с опытом в данной области</p>
+                </div>
+                <div class="guarantee-card reveal">
+                    <div class="guarantee-icon"><i class="fas fa-rotate-left"></i></div>
+                    <h3 class="guarantee-title">Корректировки</h3>
+                    <p class="guarantee-desc">До двух бесплатных корректировок в рамках первоначального технического задания</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contacts" id="contacts">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">Свяжитесь с нами</span>
+                <h2 class="section-title">Контакты</h2>
+                <p class="section-desc">Выберите удобный способ связи — ответим в кратчайшие сроки</p>
+            </div>
+            <div class="contacts-grid">
+                <a href="https://t.me/NovaScriptum_admin" target="_blank" rel="noopener" class="contact-card contact-tg reveal">
+                    <div class="contact-icon"><i class="fab fa-telegram"></i></div>
+                    <h3 class="contact-title">Telegram</h3>
+                    <p class="contact-desc">Менеджер для заказов</p>
+                    <span class="contact-link">@NovaScriptum_admin</span>
+                </a>
+                <a href="https://wa.me/79933079373" target="_blank" rel="noopener" class="contact-card contact-wa reveal">
+                    <div class="contact-icon"><i class="fab fa-whatsapp"></i></div>
+                    <h3 class="contact-title">WhatsApp</h3>
+                    <p class="contact-desc">Быстрая клиентская поддержка</p>
+                    <span class="contact-link">+7 (993) 307-93-73</span>
+                </a>
+                <a href="mailto:evgenyzaratuchenko@gmail.com" class="contact-card contact-email reveal">
+                    <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                    <h3 class="contact-title">Email</h3>
+                    <p class="contact-desc">Для официальных запросов</p>
+                    <span class="contact-link">evgenyzaratuchenko@gmail.com</span>
+                </a>
+                <a href="https://t.me/NovaScriptum" target="_blank" rel="noopener" class="contact-card contact-channel reveal">
+                    <div class="contact-icon"><i class="fas fa-bullhorn"></i></div>
+                    <h3 class="contact-title">Telegram-канал</h3>
+                    <p class="contact-desc">Новости и отзывы</p>
+                    <span class="contact-link">@NovaScriptum</span>
+                </a>
+                <a href="https://vk.ru/novascriptum" target="_blank" rel="noopener" class="contact-card contact-vk reveal">
+                    <div class="contact-icon"><i class="fab fa-vk"></i></div>
+                    <h3 class="contact-title">ВКонтакте</h3>
+                    <p class="contact-desc">Полезные материалы и кейсы</p>
+                    <span class="contact-link">vk.ru/novascriptum</span>
+                </a>
+                <a href="https://instagram.com/NovaScriptum_official" target="_blank" rel="noopener" class="contact-card contact-insta reveal">
+                    <div class="contact-icon"><i class="fab fa-instagram"></i></div>
+                    <h3 class="contact-title">Instagram</h3>
+                    <p class="contact-desc">Официальный блог проекта</p>
+                    <span class="contact-link">@NovaScriptum_official</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <div class="container">
+            <div class="cta-content reveal">
+                <h2 class="cta-title">Готовы начать?</h2>
+                <p class="cta-desc">Напишите нам — обсудим вашу работу и рассчитаем стоимость</p>
+                <div class="cta-actions">
+                    <a href="https://t.me/NovaScriptum_admin" target="_blank" rel="noopener" class="btn btn-primary btn-lg">
+                        <i class="fab fa-telegram"></i>
+                        Написать в Telegram
+                    </a>
+                    <a href="https://wa.me/79933079373" target="_blank" rel="noopener" class="btn btn-outline btn-lg">
+                        <i class="fab fa-whatsapp"></i>
+                        WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <img src="logo.png" alt="NovaScriptum" class="footer-logo">
+                    <span class="footer-name">NovaScriptum</span>
+                    <p class="footer-tagline">Помощь студентам с академическими работами</p>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-heading">Навигация</h4>
+                    <a href="#services">Услуги</a>
+                    <a href="#process">Процесс</a>
+                    <a href="#guarantees">Гарантии</a>
+                    <a href="#contacts">Контакты</a>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-heading">Контакты</h4>
+                    <a href="https://t.me/NovaScriptum_admin" target="_blank" rel="noopener"><i class="fab fa-telegram"></i> Telegram</a>
+                    <a href="https://wa.me/79933079373" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                    <a href="mailto:evgenyzaratuchenko@gmail.com"><i class="fas fa-envelope"></i> Email</a>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-heading">Соцсети</h4>
+                    <a href="https://t.me/NovaScriptum" target="_blank" rel="noopener"><i class="fab fa-telegram"></i> Канал</a>
+                    <a href="https://vk.ru/novascriptum" target="_blank" rel="noopener"><i class="fab fa-vk"></i> ВКонтакте</a>
+                    <a href="https://instagram.com/NovaScriptum_official" target="_blank" rel="noopener"><i class="fab fa-instagram"></i> Instagram</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 NovaScriptum. Все права защищены.</p>
+                <a href="oferta.txt" target="_blank" rel="noopener">Публичная оферта</a>
+            </div>
+        </div>
+    </footer>
 
     <script src="script.js"></script>
 </body>
