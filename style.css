@@ -33,11 +33,11 @@ a { text-decoration: none; color: inherit; }
     --bg-elevated: #0C1220;
     --surface: #111827;
     --surface-hover: #1A2332;
-    --accent: #C8A44E;
-    --accent-dim: #9B7B2C;
-    --accent-soft: rgba(200, 164, 78, 0.10);
-    --accent-border: rgba(200, 164, 78, 0.18);
-    --accent-glow: rgba(200, 164, 78, 0.25);
+    --accent: #A8842F;
+    --accent-dim: #7F6624;
+    --accent-soft: rgba(168, 132, 47, 0.10);
+    --accent-border: rgba(168, 132, 47, 0.22);
+    --accent-glow: rgba(168, 132, 47, 0.22);
     --text: #EDE9E0;
     --text-secondary: #9CA3AF;
     --text-tertiary: #6B7280;
@@ -58,11 +58,11 @@ a { text-decoration: none; color: inherit; }
     --bg-elevated: #F0EDE6;
     --surface: #FFFFFF;
     --surface-hover: #F5F3EE;
-    --accent: #9B7B2C;
-    --accent-dim: #7A6122;
-    --accent-soft: rgba(155, 123, 44, 0.07);
-    --accent-border: rgba(155, 123, 44, 0.18);
-    --accent-glow: rgba(155, 123, 44, 0.15);
+    --accent: #8A6D2B;
+    --accent-dim: #6B5420;
+    --accent-soft: rgba(138, 109, 43, 0.07);
+    --accent-border: rgba(138, 109, 43, 0.22);
+    --accent-glow: rgba(138, 109, 43, 0.15);
     --text: #111827;
     --text-secondary: #4B5563;
     --text-tertiary: #9CA3AF;
@@ -291,15 +291,18 @@ h1, h2, h3, h4 {
 }
 
 .hero-badge {
-    display: inline-block;
-    padding: 6px 18px;
-    background: var(--accent-soft);
-    border: 1px solid var(--accent-border);
-    border-radius: 100px;
-    font-size: 0.8125rem;
-    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 2px;
+    background: transparent;
+    border-top: 1px solid var(--accent-border);
+    border-bottom: 1px solid var(--accent-border);
+    border-radius: 0;
+    font-size: 0.72rem;
+    font-weight: 600;
     color: var(--accent);
-    letter-spacing: 0.04em;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
     margin-bottom: 28px;
 }
@@ -322,9 +325,10 @@ h1, h2, h3, h4 {
 }
 
 .hero-line {
-    width: 72px;
-    height: 2px;
-    background: var(--accent);
+    width: 160px;
+    height: 5px;
+    border-top: 1px solid var(--accent);
+    border-bottom: 1px solid var(--accent-border);
     margin: 28px auto;
     transform-origin: center;
     transform: scaleX(0);
@@ -353,6 +357,15 @@ h1, h2, h3, h4 {
     gap: 14px;
     justify-content: center;
     flex-wrap: wrap;
+}
+
+.hero-footnote {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 0.9375rem;
+    color: var(--text-tertiary);
+    margin-top: 22px;
+    letter-spacing: 0.01em;
 }
 
 .hero-scroll {
@@ -425,6 +438,30 @@ h1, h2, h3, h4 {
     font-size: 0.9375rem;
 }
 
+/* Кнопка-зеркало: намеренно тише основных CTA, чтобы не конкурировать
+   с «Помощь с работой» — это резервный путь доступа, а не призыв к действию */
+.btn-mirror {
+    padding: 14px 22px;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    background: transparent;
+    color: var(--text-secondary);
+    border: 1px solid var(--border-strong);
+    letter-spacing: 0.02em;
+}
+
+.btn-mirror i {
+    font-size: 0.8125rem;
+    color: var(--accent);
+}
+
+.btn-mirror:hover {
+    color: var(--accent);
+    border-color: var(--accent-border);
+    background: var(--accent-soft);
+    transform: translateY(-1px);
+}
+
 /* ============================================
    Stats
    ============================================ */
@@ -452,9 +489,10 @@ h1, h2, h3, h4 {
 .stat-number {
     font-family: 'Cormorant Garamond', serif;
     font-size: 2.75rem;
-    font-weight: 700;
-    color: var(--accent);
+    font-weight: 600;
+    color: var(--text);
     line-height: 1;
+    letter-spacing: -0.02em;
 }
 
 .stat-suffix {
@@ -466,10 +504,16 @@ h1, h2, h3, h4 {
 
 .stat-label {
     display: block;
-    font-size: 0.8125rem;
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
     color: var(--text-tertiary);
-    margin-top: 6px;
-    letter-spacing: 0.02em;
+    margin-top: 8px;
+}
+
+.stat-item + .stat-item {
+    border-left: 1px solid var(--border);
 }
 
 /* ============================================
@@ -481,13 +525,24 @@ h1, h2, h3, h4 {
 }
 
 .section-tag {
-    display: inline-block;
-    font-size: 0.75rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 0.72rem;
     font-weight: 600;
     color: var(--accent);
     text-transform: uppercase;
-    letter-spacing: 0.1em;
-    margin-bottom: 12px;
+    letter-spacing: 0.14em;
+    margin-bottom: 14px;
+}
+
+.section-tag::before,
+.section-tag::after {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 1px;
+    background: var(--accent-border);
 }
 
 .section-title {
@@ -521,8 +576,9 @@ h1, h2, h3, h4 {
 .service-card {
     background: var(--card-bg);
     border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 32px 28px;
+    border-top: 2px solid var(--accent-border);
+    border-radius: 4px;
+    padding: 28px 26px;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -534,17 +590,19 @@ h1, h2, h3, h4 {
 }
 
 .service-icon {
-    width: 48px;
-    height: 48px;
-    border-radius: 12px;
-    background: var(--accent-soft);
-    border: 1px solid var(--accent-border);
-    display: flex;
+    width: auto;
+    height: auto;
+    border-radius: 0;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--accent-border);
+    display: inline-flex;
     align-items: center;
-    justify-content: center;
-    font-size: 1.125rem;
+    justify-content: flex-start;
+    font-size: 1rem;
     color: var(--accent);
-    margin-bottom: 20px;
+    margin-bottom: 16px;
+    padding-bottom: 10px;
 }
 
 .service-title {
@@ -898,10 +956,38 @@ h1, h2, h3, h4 {
 
 .footer-col a i { width: 16px; text-align: center; font-size: 0.8rem; }
 
+/* --- Footer: юридический дисклеймер --- */
+.footer-legal {
+    padding: 24px 0;
+    border-top: 1px solid var(--border);
+    margin-bottom: 8px;
+}
+
+.footer-legal-text {
+    font-size: 0.75rem;
+    color: var(--text-tertiary);
+    line-height: 1.6;
+    max-width: 900px;
+    margin-bottom: 8px;
+}
+
+.footer-legal-text:last-child { margin-bottom: 0; }
+
+.footer-legal-text a {
+    color: var(--text-secondary);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    transition: color 0.2s;
+}
+
+.footer-legal-text a:hover { color: var(--accent); }
+
 .footer-bottom {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
     padding-top: 24px;
     border-top: 1px solid var(--border);
     font-size: 0.8125rem;
@@ -1020,6 +1106,10 @@ h1, h2, h3, h4 {
         gap: 24px;
     }
 
+    .stat-item + .stat-item {
+        border-left: none;
+    }
+
     .services-grid { grid-template-columns: 1fr; }
 
     .guarantees-grid { grid-template-columns: 1fr; }
@@ -1038,6 +1128,15 @@ h1, h2, h3, h4 {
     }
 
     .cta-content { padding: 48px 24px; }
+
+    /* На узких экранах зеркало уходит на отдельную строку под двумя
+       основными кнопками и не растягивается на всю ширину */
+    .hero-actions .btn-mirror {
+        order: 3;
+        flex-basis: 100%;
+        width: fit-content;
+        margin: 0 auto;
+    }
 }
 
 @media (max-width: 480px) {
