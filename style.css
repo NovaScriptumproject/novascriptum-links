@@ -441,6 +441,10 @@ h1, h2, h3, h4 {
 /* Кнопка-зеркало: намеренно тише основных CTA, чтобы не конкурировать
    с «Помощь с работой» — это резервный путь доступа, а не призыв к действию */
 .btn-mirror {
+    transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+                background-color 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+                border-color 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     padding: 14px 22px;
     font-size: 0.8125rem;
     font-weight: 500;
