@@ -202,6 +202,9 @@ h1, h2, h3, h4 {
     box-shadow: 0 4px 20px var(--accent-glow);
 }
 
+/* Кнопка «Заказать работу» внутри мобильного меню */
+.nav-drawer-cta { display: none; }
+
 .nav-toggle {
     display: none;
     flex-direction: column;
@@ -1027,8 +1030,7 @@ h1, h2, h3, h4 {
 
 /* ============================================
    Reduced Motion
-   ============================================ */
-@media (prefers-reduced-motion: reduce) {
+   ============================================ */@media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
@@ -1530,8 +1532,7 @@ body.has-cart { padding-bottom: 84px; }
 
 /* ============================================
    Responsive — Tablet
-   ============================================ */
-@media (max-width: 960px) {
+   ============================================ */@media (max-width: 960px) {
     .services-grid { grid-template-columns: repeat(2, 1fr); }
     .guarantees-grid { grid-template-columns: repeat(2, 1fr); }
     .contacts-grid { grid-template-columns: repeat(2, 1fr); }
@@ -1597,6 +1598,19 @@ body.has-cart { padding-bottom: 84px; }
     .nav-cta { display: none; }
     .nav-toggle { display: flex; }
 
+    .nav-drawer-cta {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        margin-top: 20px;
+        padding: 15px 0;
+        border: none;
+        border-radius: 10px;
+        background: var(--accent);
+        color: #fff;
+        font-weight: 600;
+    }
+
     .hero { padding: 100px 0 60px; min-height: auto; }
     .hero-scroll { display: none; }
 
@@ -1613,6 +1627,9 @@ body.has-cart { padding-bottom: 84px; }
 
     .pricing { padding: 72px 0; }
     .pricing-grid { grid-template-columns: 1fr; }
+
+    /* сбрасываем span, иначе последняя карточка вылезает за сетку */
+    .pricing-grid .price-card:last-child { grid-column: auto; }
 
     .pay-notice { padding: 16px 18px; }
 
@@ -1648,19 +1665,88 @@ body.has-cart { padding-bottom: 84px; }
         width: fit-content;
         margin: 0 auto;
     }
+
+    /* --- мобильная типографика и отступы --- */
+    .section-header { margin-bottom: 36px; }
+
+    .services,
+    .process,
+    .guarantees,
+    .contacts,
+    .cta { padding: 64px 0; }
+
+    .price-card { padding: 24px 20px 22px; }
+    .price-desc,
+    .price-list li { font-size: 0.875rem; }
+    .pricing-note,
+    .footer-legal-text { font-size: 0.8125rem; }
+
+    /* корзина: не даём длинному итогу выдавить кнопку */
+    .cart-bar-inner { gap: 10px; }
+    .cart-bar-info { min-width: 0; }
+    .cart-bar-text { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .cart-bar-btn { flex: none; }
 }
 
 @media (max-width: 480px) {
-    .hero-title { letter-spacing: -0.5px; }
+    .container { padding: 0 18px; }
+
+    .hero-title { font-size: clamp(2.5rem, 10vw, 3.25rem); letter-spacing: -0.5px; }
+    .hero-desc { font-size: 0.875rem; }
+    .hero-subtitle { font-size: 1.125rem; }
+
     .hero-actions { flex-direction: column; align-items: stretch; }
     .hero-actions .btn { justify-content: center; }
+    /* в колонке flex-basis из планшетного правила растягивает кнопку по высоте */
+    .hero-actions .btn-mirror { flex-basis: auto; width: auto; }
+
+    .section-tag { gap: 10px; font-size: 0.6875rem; letter-spacing: 0.1em; }
+    .section-tag::before,
+    .section-tag::after { width: 18px; }
+
+    .stats-grid { gap: 16px; }
     .stat-number { font-size: 2.25rem; }
+    .stat-label { font-size: 0.6875rem; letter-spacing: 0.08em; }
+
+    .price-unit { font-size: 0.8125rem; }
+    .service-desc,
+    .guarantee-desc,
+    .contact-desc { font-size: 0.875rem; }
+
+    .service-card,
+    .guarantee-card,
+    .contact-card { padding: 22px 18px; }
+
     .cta-actions { flex-direction: column; align-items: stretch; }
     .cta-actions .btn { justify-content: center; }
 
-    body.has-cart { padding-bottom: 76px; }
+    /* --- корзина --- */
     .cart-bar-info { font-size: 0.8125rem; gap: 8px; }
     .cart-badge { min-width: 22px; height: 22px; font-size: 0.6875rem; }
     .cart-bar-btn { padding: 10px 14px; font-size: 0.75rem; }
-    .cart-drawer { width: 100%; max-width: 100%; padding: 20px 18px; }
+    .cart-drawer {
+        width: 100%;
+        max-width: 100%;
+        padding: 20px 18px calc(20px + env(safe-area-inset-bottom));
+    }
+    .cart-qty button { width: 32px; height: 32px; }
+
+    .slide-btn { width: 40px; height: 40px; }
+    .cta-content { padding: 36px 18px; }
+
+    /* безопасная зона iPhone: панель не должна прятаться под жестовой полосой */
+    .cart-bar { padding-bottom: calc(12px + env(safe-area-inset-bottom)); }
+    body.has-cart { padding-bottom: calc(76px + env(safe-area-inset-bottom)); }
+}
+
+/* На тач-устройствах :hover «залипает» после тапа и карточки остаются
+   приподнятыми. Отключаем подъём там, где нет настоящего курсора. */
+@media (hover: none) {
+    .price-card:hover,
+    .service-card:hover,
+    .guarantee-card:hover,
+    .contact-card:hover {
+        transform: none;
+        box-shadow: none;
+    }
 }
