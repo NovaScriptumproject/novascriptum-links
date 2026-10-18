@@ -441,10 +441,6 @@ h1, h2, h3, h4 {
 /* Кнопка-зеркало: намеренно тише основных CTA, чтобы не конкурировать
    с «Помощь с работой» — это резервный путь доступа, а не призыв к действию */
 .btn-mirror {
-    transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1),
-                background-color 0.25s cubic-bezier(0.4, 0, 0.2, 1),
-                border-color 0.25s cubic-bezier(0.4, 0, 0.2, 1),
-                transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     padding: 14px 22px;
     font-size: 0.8125rem;
     font-weight: 500;
@@ -1044,12 +1040,511 @@ h1, h2, h3, h4 {
 }
 
 /* ============================================
+   Pricing — витрина тарифов
+   ============================================ */
+.pricing {
+    padding: 96px 0;
+}
+
+/* Плашка о неработающей онлайн-оплате */
+.pay-notice {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    max-width: 720px;
+    margin: 0 auto 32px;
+    padding: 18px 22px;
+    border: 1px solid var(--accent-border);
+    background: var(--accent-soft);
+    border-radius: 12px;
+}
+
+.pay-notice-icon {
+    flex: none;
+    margin-top: 3px;
+    font-size: 1rem;
+    color: var(--accent);
+}
+
+.pay-notice-text {
+    font-size: 0.875rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+}
+
+.pay-notice-text strong {
+    display: block;
+    color: var(--text);
+    font-weight: 600;
+    margin-bottom: 2px;
+}
+
+/* Путь покупки */
+.pay-flow {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px 32px;
+    max-width: 860px;
+    margin: 0 auto 44px;
+    padding: 0;
+    list-style: none;
+}
+
+.pay-flow-step {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    font-size: 0.8125rem;
+    color: var(--text-tertiary);
+}
+
+.pay-flow-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--accent);
+}
+
+/* Сетка витрины: 3 фиксированных тарифа + 2 расчётных */
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 20px;
+    align-items: stretch;
+}
+
+.price-card {
+    grid-column: span 2;
+    display: flex;
+    flex-direction: column;
+    padding: 26px 24px 24px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.price-card:hover {
+    border-color: var(--accent-border);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+}
+
+/* Курсовые и дипломы — индивидуальный расчёт, отдельный визуальный вес */
+.price-card--custom {
+    grid-column: span 3;
+    border-color: var(--accent-border);
+    background:
+        linear-gradient(180deg, var(--accent-soft), transparent 65%),
+        var(--card-bg);
+}
+
+.price-meta {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-tertiary);
+    margin-bottom: 10px;
+}
+
+.price-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.price-desc {
+    font-size: 0.8125rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+}
+
+.price-value {
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+    margin-bottom: 4px;
+}
+
+.price-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.25rem;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: -0.02em;
+}
+
+.price-cur {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--accent);
+}
+
+.price-custom {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    line-height: 1.25;
+    margin-bottom: 4px;
+}
+
+.price-unit {
+    font-size: 0.75rem;
+    color: var(--text-tertiary);
+    margin-bottom: 18px;
+}
+
+.price-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 0 0 22px;
+    padding: 0;
+    list-style: none;
+}
+
+.price-list li {
+    position: relative;
+    padding-left: 22px;
+    font-size: 0.8125rem;
+    line-height: 1.5;
+    color: var(--text-secondary);
+}
+
+.price-list li i {
+    position: absolute;
+    left: 0;
+    top: 0.35em;
+    font-size: 0.65rem;
+    color: var(--accent);
+}
+
+/* Кнопка прижата к низу карточки, чтобы карточки были ровными */
+.price-btn {
+    margin-top: auto;
+    justify-content: center;
+}
+
+.pricing-note {
+    max-width: 640px;
+    margin: 32px auto 0;
+    text-align: center;
+    font-size: 0.75rem;
+    line-height: 1.6;
+    color: var(--text-tertiary);
+}
+
+/* Конфигуратор слайдов у презентации */
+.price-slides {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+.slide-btn {
+    width: 34px;
+    height: 34px;
+    padding: 0;
+    border-radius: 8px;
+    border: 1px solid var(--accent-border);
+    background: var(--accent-soft);
+    color: var(--accent);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.slide-btn:hover:not(:disabled) {
+    background: var(--accent);
+    color: #fff;
+}
+
+.slide-btn:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+}
+
+.slide-count {
+    min-width: 84px;
+    text-align: center;
+    font-size: 0.8125rem;
+    color: var(--text-secondary);
+}
+
+.slide-count b {
+    color: var(--text);
+    font-weight: 600;
+}
+
+/* ============================================
+   Корзина
+   ============================================ */
+body.has-cart { padding-bottom: 84px; }
+
+.cart-bar {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 900;
+    padding: 12px 0;
+    background: var(--nav-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-top: 1px solid var(--accent-border);
+}
+
+.cart-bar-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.cart-bar-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0;
+    border: none;
+    background: none;
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.875rem;
+    cursor: pointer;
+}
+
+.cart-bar-text b { color: var(--accent); font-weight: 600; }
+
+.cart-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 24px;
+    height: 24px;
+    padding: 0 7px;
+    border-radius: 999px;
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.cart-bar-btn {
+    padding: 10px 22px;
+    font-size: 0.8125rem;
+}
+
+.cart-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 1100;
+    background: rgba(0, 0, 0, 0.55);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.cart-backdrop.open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.cart-drawer {
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 1200;
+    display: flex;
+    flex-direction: column;
+    width: 380px;
+    max-width: 94vw;
+    height: 100%;
+    height: 100dvh;
+    padding: 24px;
+    background: var(--bg-elevated);
+    border-left: 1px solid var(--border);
+    transform: translateX(100%);
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cart-drawer.open { transform: translateX(0); }
+
+.cart-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--border);
+}
+
+.cart-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.cart-close {
+    width: 32px;
+    height: 32px;
+    border: 1px solid var(--border-strong);
+    border-radius: 50%;
+    background: none;
+    color: var(--text-secondary);
+    font-size: 1.125rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: color 0.2s, border-color 0.2s;
+}
+
+.cart-close:hover {
+    color: var(--accent);
+    border-color: var(--accent-border);
+}
+
+.cart-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin: 16px 0;
+    overflow-y: auto;
+}
+
+.cart-empty {
+    padding: 24px 0;
+    font-size: 0.875rem;
+    color: var(--text-tertiary);
+    text-align: center;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--border);
+}
+
+.cart-item-name {
+    font-size: 0.875rem;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+.cart-item-meta {
+    font-size: 0.75rem;
+    color: var(--text-tertiary);
+}
+
+.cart-item-price {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--accent);
+    white-space: nowrap;
+}
+
+.cart-qty {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.cart-qty button {
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    border: 1px solid var(--border-strong);
+    border-radius: 6px;
+    background: none;
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: color 0.2s, border-color 0.2s;
+}
+
+.cart-qty button:hover {
+    color: var(--accent);
+    border-color: var(--accent-border);
+}
+
+.cart-qty span {
+    min-width: 16px;
+    text-align: center;
+    font-size: 0.8125rem;
+    color: var(--text);
+}
+
+.cart-remove {
+    margin-top: 8px;
+    padding: 0;
+    border: none;
+    background: none;
+    color: var(--text-tertiary);
+    font-size: 0.75rem;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    cursor: pointer;
+}
+
+.cart-remove:hover { color: var(--accent); }
+
+.cart-foot {
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+}
+
+.cart-total {
+    margin-bottom: 6px;
+    font-size: 0.9375rem;
+    color: var(--text-secondary);
+}
+
+.cart-total b {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text);
+}
+
+.cart-hint {
+    margin-bottom: 14px;
+    font-size: 0.75rem;
+    line-height: 1.5;
+    color: var(--text-tertiary);
+}
+
+.cart-send {
+    width: 100%;
+    justify-content: center;
+}
+
+/* ============================================
    Responsive — Tablet
    ============================================ */
 @media (max-width: 960px) {
     .services-grid { grid-template-columns: repeat(2, 1fr); }
     .guarantees-grid { grid-template-columns: repeat(2, 1fr); }
     .contacts-grid { grid-template-columns: repeat(2, 1fr); }
+
+    .pricing-grid { grid-template-columns: repeat(2, 1fr); }
+    .price-card,
+    .price-card--custom { grid-column: auto; }
+
+    /* нечётная последняя карточка занимает всю строку, чтобы не было дырки */
+    .pricing-grid .price-card:last-child { grid-column: span 2; }
+
+    /* в навбаре стало 5 пунктов — на планшете ужимаем отступы */
+    .nav-links { gap: 20px; }
     .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
 
     .process-grid {
@@ -1116,6 +1611,18 @@ h1, h2, h3, h4 {
 
     .services-grid { grid-template-columns: 1fr; }
 
+    .pricing { padding: 72px 0; }
+    .pricing-grid { grid-template-columns: 1fr; }
+
+    .pay-notice { padding: 16px 18px; }
+
+    .pay-flow {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+        margin-bottom: 32px;
+    }
+
     .guarantees-grid { grid-template-columns: 1fr; }
 
     .contacts-grid { grid-template-columns: 1fr; }
@@ -1150,4 +1657,10 @@ h1, h2, h3, h4 {
     .stat-number { font-size: 2.25rem; }
     .cta-actions { flex-direction: column; align-items: stretch; }
     .cta-actions .btn { justify-content: center; }
+
+    body.has-cart { padding-bottom: 76px; }
+    .cart-bar-info { font-size: 0.8125rem; gap: 8px; }
+    .cart-badge { min-width: 22px; height: 22px; font-size: 0.6875rem; }
+    .cart-bar-btn { padding: 10px 14px; font-size: 0.75rem; }
+    .cart-drawer { width: 100%; max-width: 100%; padding: 20px 18px; }
 }

@@ -31,6 +31,7 @@
             <div class="nav-links" id="nav-links">
                 <a href="#services" class="nav-link">Услуги</a>
                 <a href="#process" class="nav-link">Процесс</a>
+                <a href="#pricing" class="nav-link">Цены</a>
                 <a href="#guarantees" class="nav-link">Принципы</a>
                 <a href="#contacts" class="nav-link">Контакты</a>
             </div>
@@ -64,8 +65,8 @@
                     <i class="fab fa-telegram"></i>
                     Помощь с работой
                 </a>
-                <a href="#services" class="btn btn-secondary">
-                    Узнать больше
+                <a href="#pricing" class="btn btn-secondary">
+                    Смотреть цены
                 </a>
                 <a href="https://nova.tail080007.ts.net" target="_blank" rel="noopener noreferrer" class="btn btn-mirror" title="Резервная копия сайта на собственном сервере — если основной домен не открывается">
                     <i class="fas fa-globe"></i>
@@ -176,10 +177,119 @@
         </div>
     </section>
 
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">§ 03 — Услуги и цены</span>
+                <h2 class="section-title">Услуги и цены</h2>
+                <p class="section-desc">Фиксированные тарифы на типовые работы. Курсовые и дипломные проекты оцениваются индивидуально — стоимость согласуем до начала работы.</p>
+            </div>
+
+            <div class="pay-notice reveal" role="note">
+                <i class="fas fa-circle-info pay-notice-icon" aria-hidden="true"></i>
+                <p class="pay-notice-text">
+                    <strong>Онлайн-оплата временно недоступна — оформите заказ через Telegram.</strong>
+                    Менеджер уточнит детали, согласует стоимость и пришлёт персональную ссылку на оплату.
+                </p>
+            </div>
+
+            <ol class="pay-flow reveal">
+                <li class="pay-flow-step"><span class="pay-flow-num">01</span>Собираете заказ</li>
+                <li class="pay-flow-step"><span class="pay-flow-num">02</span>Отправляете менеджеру в Telegram</li>
+                <li class="pay-flow-step"><span class="pay-flow-num">03</span>Получаете ссылку на оплату</li>
+            </ol>
+
+            <div class="pricing-grid">
+
+                <article class="price-card reveal" data-sku="REF-450" data-price="450">
+                    <p class="price-meta">12–15 листов</p>
+                    <h3 class="price-title">Реферат</h3>
+                    <p class="price-desc">Самостоятельная работа по вашей теме: план, основная часть, заключение и список литературы.</p>
+                    <p class="price-value"><span class="price-number">450</span><span class="price-cur">₽</span></p>
+                    <p class="price-unit">за работу целиком</p>
+                    <ul class="price-list">
+                        <li><i class="fas fa-check" aria-hidden="true"></i>Структура и оформление по требованиям вуза</li>
+                        <li><i class="fas fa-check" aria-hidden="true"></i>10–15 источников в списке литературы</li>
+                        <li><i class="fas fa-check" aria-hidden="true"></i>Проверка текста на оригинальность</li>
+                    </ul>
+                    <button type="button" class="btn btn-primary price-btn js-add" data-id="ref" data-name="Реферат" data-meta="12–15 листов" data-price="450">Добавить в заказ</button>
+                </article>
+
+                <article class="price-card reveal" data-sku="DOK-350" data-price="350">
+                    <p class="price-meta">5–7 листов</p>
+                    <h3 class="price-title">Доклад / Эссе</h3>
+                    <p class="price-desc">Короткий текст для выступления, семинара или письменной работы по заданной теме.</p>
+                    <p class="price-value"><span class="price-number">350</span><span class="price-cur">₽</span></p>
+                    <p class="price-unit">за работу целиком</p>
+                    <ul class="price-list">
+                        <li><i class="fas fa-check" aria-hidden="true"></i>Логика изложения и аргументация</li>
+                        <li><i class="fas fa-check" aria-hidden="true"></i>Тезисы для выступления по запросу</li>
+                        <li><i class="fas fa-check" aria-hidden="true"></i>Срок — от одного дня</li>
+                    </ul>
+                    <button type="button" class="btn btn-primary price-btn js-add" data-id="dok" data-name="Доклад / Эссе" data-meta="5–7 листов" data-price="350">Добавить в заказ</button>
+                </article>
+
+                <article class="price-card reveal" data-sku="PRE-250" data-price="250"
+                         data-price-base="250" data-slides-base="7" data-slide-step="5" data-slide-price="50" data-slides="7">
+                    <p class="price-meta">7 слайдов</p>
+                    <h3 class="price-title">Презентация</h3>
+                    <p class="price-desc">Слайды с тезисами и визуалом под ваш доклад, семинар или защиту.</p>
+                    <p class="price-value"><span class="price-number" data-role="price">250</span><span class="price-cur">₽</span></p>
+                    <div class="price-slides">
+                        <button type="button" class="slide-btn" data-dir="-1" aria-label="Убрать 5 слайдов">−5</button>
+                        <span class="slide-count"><b data-role="slides">7</b> <span data-role="slides-word">слайдов</span></span>
+                        <button type="button" class="slide-btn" data-dir="1" aria-label="Добавить 5 слайдов">+5</button>
+                    </div>
+                    <p class="price-unit">каждые +5 слайдов — +50 ₽</p>
+                    <ul class="price-list">
+                        <li><i class="fas fa-check" aria-hidden="true"></i>12 слайдов — 300 ₽, 17 слайдов — 350 ₽</li>
+                        <li><i class="fas fa-check" aria-hidden="true"></i>Формат PowerPoint (.pptx)</li>
+                        <li><i class="fas fa-check" aria-hidden="true"></i>Слайды с тезисами и визуалом</li>
+                    </ul>
+                    <button type="button" class="btn btn-primary price-btn js-add" data-id="pre" data-name="Презентация" data-quote="0">Добавить в заказ</button>
+                </article>
+
+                <article class="price-card price-card--custom reveal" data-sku="KRW-IND">
+                    <p class="price-meta">один этап</p>
+                    <h3 class="price-title">Курсовая работа</h3>
+                    <p class="price-desc">Стоимость зависит от объёма, темы и требований кафедры. Согласуем смету до начала работы — оплата один раз, за весь объём.</p>
+                    <p class="price-custom">Рассчитывается индивидуально</p>
+                    <p class="price-unit">смета фиксируется до оплаты</p>
+                    <ul class="price-list">
+                        <li><i class="fas fa-check" aria-hidden="true"></i>Одна оплата — весь объём работы</li>
+                        <li><i class="fas fa-check" aria-hidden="true"></i>Смета и сроки согласуются заранее</li>
+                        <li><i class="fas fa-check" aria-hidden="true"></i>Две правки по техническому заданию</li>
+                    </ul>
+                    <button type="button" class="btn btn-primary price-btn js-add" data-id="krw" data-name="Курсовая работа" data-meta="индивидуальный расчёт" data-quote="1">Добавить в заказ</button>
+                </article>
+
+                <article class="price-card price-card--custom reveal" data-sku="DIP-IND">
+                    <p class="price-meta">три этапа</p>
+                    <h3 class="price-title">Дипломная работа</h3>
+                    <p class="price-desc">Крупный проект, который оплачивается по этапам: каждый этап считается и оплачивается отдельно, следующий начинается после приёмки предыдущего.</p>
+                    <p class="price-custom">Рассчитывается индивидуально</p>
+                    <p class="price-unit">оплата после каждого этапа</p>
+                    <ul class="price-list">
+                        <li><i class="fas fa-check" aria-hidden="true"></i>Этап 1 — план, введение, первая глава</li>
+                        <li><i class="fas fa-check" aria-hidden="true"></i>Этап 2 — основные главы</li>
+                        <li><i class="fas fa-check" aria-hidden="true"></i>Этап 3 — заключение, оформление, речь к защите</li>
+                    </ul>
+                    <button type="button" class="btn btn-primary price-btn js-add" data-id="dip" data-name="Дипломная работа" data-meta="индивидуальный расчёт, 3 этапа" data-quote="1">Добавить в заказ</button>
+                </article>
+
+            </div>
+
+            <p class="pricing-note">
+                Цены указаны за работу целиком, без скрытых доплат. Две правки по первоначальному техническому заданию — бесплатно.
+                Стоимость курсовых и дипломных работ согласуется с менеджером в переписке.
+            </p>
+        </div>
+    </section>
+
     <section class="guarantees" id="guarantees">
         <div class="container">
             <div class="section-header reveal">
-                <span class="section-tag">§ 03 — Нам доверяют</span>
+                <span class="section-tag">§ 04 — Нам доверяют</span>
                 <h2 class="section-title">Наши принципы</h2>
                 <p class="section-desc">Принципы, которые стоят за каждым нашим проектом</p>
             </div>
@@ -211,7 +321,7 @@
     <section class="contacts" id="contacts">
         <div class="container">
             <div class="section-header reveal">
-                <span class="section-tag">§ 04 — Свяжитесь с нами</span>
+                <span class="section-tag">§ 05 — Свяжитесь с нами</span>
                 <h2 class="section-title">Контакты</h2>
                 <p class="section-desc">Выберите удобный способ связи — ответим в кратчайшие сроки</p>
             </div>
@@ -287,6 +397,7 @@
                     <h4 class="footer-heading">Навигация</h4>
                     <a href="#services">Услуги</a>
                     <a href="#process">Процесс</a>
+                    <a href="#pricing">Цены</a>
                     <a href="#guarantees">Принципы</a>
                     <a href="#contacts">Контакты</a>
                 </div>
@@ -325,6 +436,33 @@
         </div>
     </footer>
 
+    <!-- ===== Корзина ===== -->
+    <div class="cart-bar" id="cart-bar" hidden>
+        <div class="cart-bar-inner container">
+            <button type="button" class="cart-bar-info" id="cart-open">
+                <span class="cart-badge" id="cart-count">0</span>
+                <span class="cart-bar-text">В заказе: <b id="cart-sum">0 ₽</b></span>
+            </button>
+            <button type="button" class="btn btn-primary cart-bar-btn" id="cart-checkout">Оформить заказ</button>
+        </div>
+    </div>
+
+    <div class="cart-backdrop" id="cart-backdrop"></div>
+
+    <aside class="cart-drawer" id="cart-drawer" role="dialog" aria-modal="true" aria-labelledby="cart-title" aria-hidden="true">
+        <div class="cart-head">
+            <h3 class="cart-title" id="cart-title">Ваш заказ</h3>
+            <button type="button" class="cart-close" id="cart-close" aria-label="Закрыть заказ">×</button>
+        </div>
+        <div class="cart-body" id="cart-items"></div>
+        <div class="cart-foot">
+            <p class="cart-total">Итого: <b id="cart-total">0 ₽</b></p>
+            <p class="cart-hint">Курсовые и дипломные работы считаются индивидуально — стоимость менеджер назовёт в переписке.</p>
+            <a class="btn btn-primary cart-send" id="cart-send" href="https://t.me/NovaScriptum_admin" target="_blank" rel="noopener">Отправить заказ в Telegram</a>
+        </div>
+    </aside>
+
     <script src="script.js"></script>
+    <script src="cart.js"></script>
 </body>
 </html>
