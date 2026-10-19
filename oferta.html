@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Публичная оферта — NovaScriptum</title>
+<meta name="description" content="Публичная оферта NovaScriptum на оказание информационно-аналитических и консультационных услуг. Редакция от 20.10.2026.">
+<link rel="icon" href="favicon.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script>
+  (function () {
+    try {
+      var saved = localStorage.getItem('ns-theme');
+      if (saved) document.documentElement.setAttribute('data-theme', saved);
+    } catch (e) {}
+  })();
+</script>
+<style>
+  :root {
+    --bg: #06080D; --bg-elevated: #0C1220; --bg-card: #0F1522;
+    --accent: #A8842F; --accent-dim: #7F6624; --accent-soft: rgba(168,132,47,.10);
+    --accent-border: rgba(168,132,47,.22);
+    --text: #EDE9E0; --text-secondary: #9CA3AF; --text-tertiary: #6B7280;
+    --line: rgba(255,255,255,.07);
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+  [data-theme="light"] {
+    --bg: #FAFAF7; --bg-elevated: #F0EDE6; --bg-card: #FFFFFF;
+    --accent: #8A6D2B; --accent-dim: #6B5420; --accent-soft: rgba(138,109,43,.07);
+    --accent-border: rgba(138,109,43,.22);
+    --text: #111827; --text-secondary: #4B5563; --text-tertiary: #9CA3AF;
+    --line: rgba(0,0,0,.08);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; scroll-padding-top: 92px; }
+  body {
+    background: var(--bg); color: var(--text); font-family: var(--sans);
+    font-size: 16px; line-height: 1.7; -webkit-font-smoothing: antialiased;
+    background-image: radial-gradient(60rem 40rem at 80% -10%, var(--accent-soft), transparent 70%);
+    background-attachment: fixed;
+  }
+  a { color: inherit; text-decoration: none; }
+  .skip { position: absolute; left: -999px; }
+  .skip:focus { left: 12px; top: 12px; background: var(--accent); color: #000; padding: 8px 14px; border-radius: 8px; z-index: 99; }
+
+  /* верхняя панель */
+  .bar {
+    position: sticky; top: 0; z-index: 20; backdrop-filter: blur(14px);
+    background: color-mix(in srgb, var(--bg) 82%, transparent);
+    border-bottom: 1px solid var(--line);
+  }
+  .bar-in {
+    max-width: 1120px; margin: 0 auto; padding: 14px 24px;
+    display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  }
+  .brand { font-family: var(--serif); font-size: 1.16rem; letter-spacing: .01em; }
+  .brand b { color: var(--accent); font-weight: 600; }
+  .bar-tools { display: flex; align-items: center; gap: 8px; }
+  .tool {
+    display: inline-flex; align-items: center; gap: 6px; font-size: .76rem; font-weight: 500;
+    padding: 8px 12px; border: 1px solid var(--line); border-radius: 999px;
+    color: var(--text-secondary); background: transparent; cursor: pointer; font-family: inherit;
+    transition: .2s;
+  }
+  .tool:hover { color: var(--text); border-color: var(--accent-border); background: var(--accent-soft); }
+
+  /* обложка */
+  .hero { max-width: 1120px; margin: 0 auto; padding: 62px 24px 34px; }
+  .kicker {
+    font-size: .7rem; letter-spacing: .22em; text-transform: uppercase;
+    color: var(--accent); font-weight: 600; margin-bottom: 20px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .kicker::after { content: ""; height: 1px; flex: 1; background: var(--accent-border); }
+  h1 {
+    font-family: var(--serif); font-weight: 400; font-size: clamp(2rem, 5vw, 3.3rem);
+    line-height: 1.14; letter-spacing: -.01em; max-width: 20ch;
+  }
+  h1 em { font-style: italic; color: var(--accent); }
+  .h1-sub {
+    font-family: var(--serif); font-size: clamp(.92rem, 1.7vw, 1.1rem); letter-spacing: .07em;
+    text-transform: uppercase; color: var(--text-tertiary); margin-top: 12px;
+    max-width: 36ch; line-height: 1.5;
+  }
+  .hero-sub { margin-top: 22px; max-width: 62ch; color: var(--text-secondary); font-size: .96rem; }  .hero-sub .lead { display: block; }
+  .hero-sub .lead + .lead { margin-top: 12px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 26px; }
+  .chip {
+    font-size: .72rem; padding: 6px 13px; border-radius: 999px;
+    border: 1px solid var(--accent-border); color: var(--accent); background: var(--accent-soft);
+  }
+  .chip.gray { border-color: var(--line); color: var(--text-tertiary); background: transparent; }
+
+  /* каркас */
+  .wrap {
+    max-width: 1120px; margin: 0 auto; padding: 0 24px 96px;
+    display: grid; grid-template-columns: 268px minmax(0, 1fr); gap: 48px; align-items: start;
+  }
+  /* оглавление */
+  .toc { position: sticky; top: 92px; }
+  .toc-h {
+    font-size: .68rem; letter-spacing: .18em; text-transform: uppercase;
+    color: var(--text-tertiary); margin-bottom: 14px;
+  }
+  .toc-a {
+    display: flex; gap: 10px; padding: 7px 10px 7px 0; font-size: .82rem;
+    color: var(--text-secondary); border-left: 1px solid var(--line);
+    padding-left: 14px; margin-left: -1px; transition: .18s; line-height: 1.35;
+  }
+  .toc-a:hover { color: var(--text); border-left-color: var(--accent-border); }
+  .toc-a.on { color: var(--accent); border-left-color: var(--accent); }
+  .toc-i { color: var(--text-tertiary); font-variant-numeric: tabular-nums; font-size: .74rem; padding-top: 2px; }
+  .toc-a.on .toc-i { color: var(--accent); }
+
+  /* документ */
+  .doc { min-width: 0; }
+  .sec { padding: 34px 0 6px; border-top: 1px solid var(--line); }
+  .sec:first-child { border-top: none; padding-top: 0; }
+  .sec-h {
+    display: flex; gap: 16px; align-items: baseline; margin-bottom: 18px;
+    font-family: var(--serif); font-weight: 500; font-size: clamp(1.3rem, 2.6vw, 1.72rem);
+    line-height: 1.22; letter-spacing: -.005em;
+  }
+  .sec-n {
+    font-family: var(--sans); font-size: .74rem; font-weight: 600; color: var(--accent);
+    border: 1px solid var(--accent-border); background: var(--accent-soft);
+    border-radius: 8px; padding: 3px 9px; flex: none; transform: translateY(-3px);
+    font-variant-numeric: tabular-nums;
+  }
+  .sec-b { color: var(--text-secondary); font-size: .93rem; }
+  .cl { display: grid; grid-template-columns: 62px minmax(0, 1fr); gap: 8px; padding: 9px 0; }
+  .cl-n {
+    color: var(--accent); font-size: .8rem; font-weight: 500;
+    font-variant-numeric: tabular-nums; padding-top: 2px;
+  }
+  .cl-t { color: var(--text-secondary); }
+  .pp { padding: 9px 0; color: var(--text-secondary); }
+  .defs { display: flex; flex-direction: column; gap: 2px; }
+  .df { padding: 10px 0; border-bottom: 1px solid var(--line); }
+  .df:last-child { border-bottom: none; }
+  .df dt {
+    font-family: var(--serif); font-size: 1.06rem; color: var(--text);
+    font-weight: 600; margin-bottom: 2px;
+  }
+  .df dd { color: var(--text-secondary); font-size: .92rem; }
+
+  /* контакты */
+  .contacts { margin-top: 40px; padding-top: 34px; border-top: 1px solid var(--line); }
+  .contacts h2 {
+    font-family: var(--serif); font-weight: 500; font-size: 1.5rem; margin-bottom: 6px;
+  }
+  .contacts p { color: var(--text-secondary); font-size: .9rem; margin-bottom: 20px; max-width: 60ch; }
+  .ct-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-bottom: 22px; }
+  .ct {
+    display: flex; flex-direction: column; gap: 2px; padding: 12px 14px;
+    border: 1px solid var(--line); border-radius: 12px; background: var(--bg-card);
+    transition: .2s;
+  }
+  a.ct:hover { border-color: var(--accent-border); background: var(--accent-soft); }
+  .ct-k { font-size: .66rem; letter-spacing: .1em; text-transform: uppercase; color: var(--text-tertiary); }
+  .ct-v { font-size: .86rem; color: var(--text); word-break: break-word; }
+  .copy { margin-top: 26px; font-size: .76rem; color: var(--text-tertiary); }
+
+  /* низ */
+  .foot {
+    border-top: 1px solid var(--line); padding: 26px 24px; text-align: center;
+    font-size: .78rem; color: var(--text-tertiary);
+  }
+  .foot a { color: var(--accent); }
+  .foot a:hover { text-decoration: underline; }
+
+  @media (max-width: 960px) {
+    .wrap { grid-template-columns: 1fr; gap: 26px; }
+    .toc { position: static; border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; background: var(--bg-card); }
+    .toc-a { border-left: none; padding-left: 0; }
+    .toc-a.on { color: var(--accent); }
+  }
+  @media (max-width: 640px) {
+    .bar-in { padding: 12px 16px; }
+    .hero { padding: 44px 16px 26px; }
+    .wrap { padding: 0 16px 70px; }
+    .cl { grid-template-columns: 1fr; gap: 0; }
+    .cl-n { padding-top: 0; }
+    .ct-grid { grid-template-columns: 1fr; }
+    .tool span { display: none; }
+    .tool { padding: 9px 11px; }
+  }
+
+  @media print {
+    :root { --bg: #fff; --text: #000; --text-secondary: #222; --text-tertiary: #555;
+             --line: #ddd; --accent: #000; --accent-soft: transparent; --accent-border: #999; }
+    body { background: #fff; }
+    .bar, .toc, .foot, .tool, .chips { display: none !important; }
+    .wrap { display: block; max-width: none; padding: 0; }
+    .hero { padding: 0 0 18px; }
+    h1 { font-size: 20pt; }
+    .sec { break-inside: avoid; border-top: 1px solid #ddd; }
+    .sec-h { font-size: 13pt; }
+    .cl, .df, .pp { break-inside: avoid; }
+    a { text-decoration: none; color: #000; }
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#doc">Перейти к тексту</a>
+
+<div class="bar">
+  <div class="bar-in">
+    <a class="brand" href="index.html">Nova<b>Scriptum</b></a>
+    <div class="bar-tools">
+      <button class="tool" id="print" type="button" aria-label="Распечатать страницу">⎙ <span>Печать</span></button>
+      <a class="tool" href="oferta.txt" target="_blank" rel="noopener" aria-label="Скачать исходный текст">↓ <span>TXT</span></a>
+      <button class="tool" id="theme" type="button" aria-label="Сменить тему">◐ <span>Тема</span></button>
+      <a class="tool" href="index.html">← <span>На сайт</span></a>
+    </div>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="kicker">Правовая информация</div>
+  <h1>Публичная <em>оферта</em></h1>
+  <p class="h1-sub">НА ОКАЗАНИЕ ИНФОРМАЦИОННО-АНАЛИТИЧЕСКИХ И КОНСУЛЬТАЦИОННЫХ УСЛУГ NOVASCRIPTUM</p>
+  <p class="hero-sub"><span class="lead">Официальное предложение (публичная оферта) в соответствии со ст. 435, 437 Гражданского кодекса Российской Федерации.</span><span class="lead">Настоящий документ определяет порядок оказания информационно-аналитических и консультационных услуг сервисом NovaScriptum (сайт: www.novascriptum.ru). Любое лицо, осуществившее оплату услуг Исполнителя через платёжный сервис Platega.io посредством Telegram-бота, подтверждает, что полностью ознакомилось с условиями настоящей оферты, принимает их безоговорочно и заключает договор оказания услуг с Исполнителем (ст. 428 ГК РФ).</span></p>
+  <div class="chips">
+    <span class="chip">Редакция от 20.10.2026</span>
+    <span class="chip gray">17 разделов</span>
+    <span class="chip gray">ГК РФ, ст. 435, 437, 438</span>
+    <span class="chip gray">Платежи через Platega.io</span>
+  </div>
+</header>
+
+<div class="wrap">
+  <nav class="toc" aria-label="Содержание">
+    <div class="toc-h">Содержание</div>
+    <a class="toc-a" href="#s1" data-n="1"><span class="toc-i">1</span>Термины и определения</a>
+<a class="toc-a" href="#s2" data-n="2"><span class="toc-i">2</span>Предмет договора</a>
+<a class="toc-a" href="#s3" data-n="3"><span class="toc-i">3</span>Порядок заключения договора</a>
+<a class="toc-a" href="#s4" data-n="4"><span class="toc-i">4</span>Порядок оказания услуг</a>
+<a class="toc-a" href="#s5" data-n="5"><span class="toc-i">5</span>Сроки оказания услуг</a>
+<a class="toc-a" href="#s6" data-n="6"><span class="toc-i">6</span>Стоимость и порядок оплаты</a>
+<a class="toc-a" href="#s7" data-n="7"><span class="toc-i">7</span>Порядок внесения изменений и корректировок</a>
+<a class="toc-a" href="#s8" data-n="8"><span class="toc-i">8</span>Порядок приёмки услуг</a>
+<a class="toc-a" href="#s9" data-n="9"><span class="toc-i">9</span>Оригинальность и системы проверки</a>
+<a class="toc-a" href="#s10" data-n="10"><span class="toc-i">10</span>Интеллектуальная собственность</a>
+<a class="toc-a" href="#s11" data-n="11"><span class="toc-i">11</span>Отказ от договора и возврат денежных средств</a>
+<a class="toc-a" href="#s12" data-n="12"><span class="toc-i">12</span>Ограничение ответственности</a>
+<a class="toc-a" href="#s13" data-n="13"><span class="toc-i">13</span>Электронное взаимодействие</a>
+<a class="toc-a" href="#s14" data-n="14"><span class="toc-i">14</span>Конфиденциальность</a>
+<a class="toc-a" href="#s15" data-n="15"><span class="toc-i">15</span>Форс-мажор</a>
+<a class="toc-a" href="#s16" data-n="16"><span class="toc-i">16</span>Порядок разрешения споров</a>
+<a class="toc-a" href="#s17" data-n="17"><span class="toc-i">17</span>Заключительные положения</a>
+  </nav>
+
+  <main class="doc" id="doc">
+    
+<article class="sec" id="s1">
+  <h2 class="sec-h"><span class="sec-n">1</span><span>ТЕРМИНЫ И ОПРЕДЕЛЕНИЯ</span></h2>
+  <div class="sec-b"><dl class="defs"><div class="df"><dt>Исполнитель</dt><dd>физическое лицо, осуществляющее деятельность под обозначением NovaScriptum и оказывающее информационно-аналитические и консультационные услуги.</dd></div><div class="df"><dt>Заказчик</dt><dd>физическое или юридическое лицо, оформившее заказ и оплатившее услуги Исполнителя.</dd></div><div class="df"><dt>Сайт</dt><dd>интернет-ресурс, расположенный по адресу www.novascriptum.ru, через который Заказчик знакомится с услугами и оформляет заявку.</dd></div><div class="df"><dt>Telegram-бот</dt><dd>программный интерфейс Исполнителя в мессенджере Telegram, через который Заказчик получает ссылку на оплату и уведомления о статусе заказа.</dd></div><div class="df"><dt>Платёжный сервис (Platega.io)</dt><dd>сторонний платёжный агрегатор (шлюз), обеспечивающий техническую возможность проведения платежей. Платёжный сервис является независимым посредником. Исполнитель не аффилирован с ним и не несёт ответственности за его действия, задержки, сбои или отказы в проведении платежей.</dd></div><div class="df"><dt>Услуги</dt><dd>информационно-аналитические, консультационные, методические и исследовательские услуги, включая: анализ источников; подбор литературы; подготовку демонстрационных материалов; составление примеров структуры; подготовку информационных материалов; подготовку презентационных и аналитических материалов; подготовку исследовательских материалов; консультационное сопровождение; иные услуги информационного характера.</dd></div><div class="df"><dt>Материалы</dt><dd>результаты интеллектуальной и аналитической деятельности, предоставляемые Заказчику исключительно в ознакомительных, исследовательских, информационных и вспомогательных целях.</dd></div><div class="df"><dt>Техническое задание (ТЗ)</dt><dd>требования Заказчика к объёму, структуре, срокам и параметрам услуг, согласованные с Исполнителем (администратором) до момента оплаты.</dd></div><div class="df"><dt>Администратор</dt><dd>представитель Исполнителя, осуществляющий согласование ТЗ, расчёт стоимости и выставление счёта через Telegram-бот, а также посредством иных каналов связи, указанных в настоящей Оферте.</dd></div><div class="df"><dt>Каналы связи</dt><dd>официальные средства коммуникации Исполнителя, указанные в разделе «Контактные данные» настоящей Оферты, включая сайт, Telegram, WhatsApp, ВКонтакте, Instagram, группу Telegram и электронную почту.</dd></div></dl></div>
+</article>
+<article class="sec" id="s2">
+  <h2 class="sec-h"><span class="sec-n">2</span><span>ПРЕДМЕТ ДОГОВОРА</span></h2>
+  <div class="sec-b"><div class="cl"><span class="cl-n">2.1.</span><p class="cl-t">Исполнитель обязуется по заданию Заказчика оказать информационно-аналитические и консультационные услуги, а Заказчик обязуется принять и оплатить данные услуги.</p></div><div class="cl"><span class="cl-n">2.2.</span><p class="cl-t">Результаты услуг предоставляются исключительно в ознакомительных, информационных, аналитических, исследовательских, консультационных и демонстрационных целях.</p></div><div class="cl"><span class="cl-n">2.3.</span><p class="cl-t">Материалы не являются официальными аттестационными, квалификационными или образовательными работами и не предназначены для непосредственной сдачи в образовательные организации без самостоятельной переработки Заказчиком.</p></div><div class="cl"><span class="cl-n">2.4.</span><p class="cl-t">Исполнитель не оказывает образовательные услуги в смысле Федерального закона «Об образовании в Российской Федерации».</p></div><div class="cl"><span class="cl-n">2.5.</span><p class="cl-t">Исполнитель не гарантирует: получение Заказчиком положительной оценки; прохождение аттестации или защиту работы; принятие материалов преподавателем или образовательной организацией; соответствие внутренним требованиям конкретного учебного заведения; достижение определённого процента оригинальности; прохождение автоматизированных систем проверки.</p></div><div class="cl"><span class="cl-n">2.6.</span><p class="cl-t">Все решения преподавателей, научных руководителей, комиссий, образовательных организаций, а также автоматизированных систем проверки являются решениями третьих лиц, на которые Исполнитель не влияет и ответственности за которые не несёт.</p></div><div class="cl"><span class="cl-n">2.7.</span><p class="cl-t">Заказчик самостоятельно несёт ответственность за использование материалов. Исполнитель не участвует в отношениях Заказчика с образовательной организацией.</p></div></div>
+</article>
+<article class="sec" id="s3">
+  <h2 class="sec-h"><span class="sec-n">3</span><span>ПОРЯДОК ЗАКЛЮЧЕНИЯ ДОГОВОРА</span></h2>
+  <div class="sec-b"><div class="cl"><span class="cl-n">3.1.</span><p class="cl-t">Договор считается заключённым с момента: оформления заявки Заказчиком через сайт, Telegram-бот, мессенджеры (включая Telegram, WhatsApp, ВКонтакте, Instagram) или иные средства связи, указанные в настоящей Оферте; согласования Технического задания (ТЗ) и стоимости с Администратором; поступления оплаты через платёжный сервис Platega.io посредством Telegram-бота.</p></div><div class="cl"><span class="cl-n">3.2.</span><p class="cl-t">Акцептом оферты в соответствии со ст. 438 ГК РФ признаётся: оплата услуг или внесение предоплаты через платёжный сервис Platega.io; подтверждение заказа через мессенджеры (включая Telegram, WhatsApp, ВКонтакте, Instagram), социальные сети, электронную почту либо иные средства связи, указанные в настоящей Оферте.</p></div><div class="cl"><span class="cl-n">3.3.</span><p class="cl-t">Заказчик, совершая акцепт, подтверждает, что достиг возраста 18 лет (либо действует с согласия законного представителя), обладает необходимой дееспособностью, ознакомился с условиями оферты и понимает информационно-консультационный характер услуг.</p></div><div class="cl"><span class="cl-n">3.4.</span><p class="cl-t">При оформлении заказа Заказчик, не достигший возраста 18 лет, обязан сообщить об этом Исполнителю и предоставить согласие законного представителя. Если Заказчик скрыл свой возраст или действовал без согласия законного представителя, Исполнитель не несёт ответственности за последствия, а Заказчик принимает на себя все риски, связанные с возможным признанием сделки недействительной.</p></div><div class="cl"><span class="cl-n">3.5.</span><p class="cl-t">Исполнитель вправе отказать в заключении договора без объяснения причин на этапе согласования ТЗ.</p></div></div>
+</article>
+<article class="sec" id="s4">
+  <h2 class="sec-h"><span class="sec-n">4</span><span>ПОРЯДОК ОКАЗАНИЯ УСЛУГ</span></h2>
+  <div class="sec-b"><div class="cl"><span class="cl-n">4.1.</span><p class="cl-t">Услуги оказываются на основании предоставленного Заказчиком ТЗ, согласованного с Администратором.</p></div><div class="cl"><span class="cl-n">4.2.</span><p class="cl-t">Заказчик обязан предоставить методические материалы, требования, пожелания, образцы оформления, сроки и иные необходимые сведения.</p></div><div class="cl"><span class="cl-n">4.3.</span><p class="cl-t">Исполнитель не несёт ответственности за последствия неполного ТЗ, ошибочных данных или изменения требований после начала оказания услуг.</p></div><div class="cl"><span class="cl-n">4.4.</span><p class="cl-t">При отсутствии необходимых данных Исполнитель вправе приостановить оказание услуг, перенести сроки либо выполнить работу на основании имеющихся сведений.</p></div><div class="cl"><span class="cl-n">4.5.</span><p class="cl-t">В случае отсутствия ответа Заказчика более 3 (трёх) календарных дней Исполнитель вправе приостановить оказание услуг и уведомить Заказчика о необходимости подтверждения дальнейших действий. В случае отсутствия ответа Заказчика более 7 (семи) календарных дней Исполнитель вправе завершить оказание услуг по имеющимся данным, направив Заказчику соответствующее уведомление.</p></div><div class="cl"><span class="cl-n">4.6.</span><p class="cl-t">Претензии, связанные с последствиями отсутствия связи со стороны Заказчика, не принимаются.</p></div><div class="cl"><span class="cl-n">4.7.</span><p class="cl-t">Исполнитель вправе привлекать третьих лиц, специалистов, консультантов и соисполнителей для оказания услуг без дополнительного согласования.</p></div><div class="cl"><span class="cl-n">4.8.</span><p class="cl-t">Услуги считаются начатыми с момента анализа ТЗ, резервирования времени специалистов, подготовки структуры, подбора материалов либо выполнения иных организационных действий.</p></div><div class="cl"><span class="cl-n">4.9.</span><p class="cl-t">Промежуточные материалы, черновики, планы, структуры и иные результаты также признаются частью оказанных услуг.</p></div><div class="cl"><span class="cl-n">4.10.</span><p class="cl-t">Исполнитель вправе прекратить коммуникацию либо отказаться от дальнейшего оказания услуг в случаях угроз, оскорблений, давления, спама, злоупотребления корректировками либо попыток мошенничества.</p></div><div class="cl"><span class="cl-n">4.11.</span><p class="cl-t">Для крупных заказов, требующих поэтапной сдачи, Исполнитель вправе предусмотреть поэтапную передачу результатов: структура и план, отдельные разделы, финальная версия. Каждый этап считается выполненным с момента передачи соответствующего результата Заказчику. Крупные заказы могут оплачиваться несколькими платежами (частями), каждый из которых не превышает установленный платёжным сервисом лимит.</p></div></div>
+</article>
+<article class="sec" id="s5">
+  <h2 class="sec-h"><span class="sec-n">5</span><span>СРОКИ ОКАЗАНИЯ УСЛУГ</span></h2>
+  <div class="sec-b"><div class="cl"><span class="cl-n">5.1.</span><p class="cl-t">Сроки оказания услуг определяются индивидуально в зависимости от объёма и сложности.</p></div><div class="cl"><span class="cl-n">5.2.</span><p class="cl-t">Срок начала оказания услуг исчисляется с момента выполнения Заказчиком обязательств по оплате (поступление платежа через платёжный сервис Platega.io), а также предоставления Исполнителю полной информации и утверждения Технического задания (ТЗ). Внесение оплаты является необходимым условием для резервирования времени профильных специалистов и начала аналитической работы над проектом.</p></div><div class="cl"><span class="cl-n">5.3.</span><p class="cl-t">Сроки могут быть увеличены в случае изменения ТЗ, предоставления дополнительных требований, задержек со стороны Заказчика, технических сбоев или обстоятельств непреодолимой силы.</p></div><div class="cl"><span class="cl-n">5.4.</span><p class="cl-t">Срочные заказы (выполнение в срок менее стандартного) оплачиваются по повышенному тарифу с наценкой +40 % к базовой стоимости.</p></div></div>
+</article>
+<article class="sec" id="s6">
+  <h2 class="sec-h"><span class="sec-n">6</span><span>СТОИМОСТЬ И ПОРЯДОК ОПЛАТЫ</span></h2>
+  <div class="sec-b"><div class="cl"><span class="cl-n">6.1.</span><p class="cl-t">Стоимость услуг определяется индивидуально и зависит от объёма, сложности и требований к оформлению. Фиксированные тарифы на отдельные виды услуг размещены на Сайте и в Telegram-боте.</p></div><div class="cl"><span class="cl-n">6.2.</span><p class="cl-t">Оплата услуг производится через Telegram-бот с использованием платёжного сервиса Platega.io после согласования Технического задания (ТЗ) и стоимости с Администратором. Ссылка на оплату формируется и направляется Заказчику Администратором.</p></div><div class="cl"><span class="cl-n">6.3.</span><p class="cl-t">Услуги оказываются на условиях полной (100 %) предоплаты, если иное не согласовано сторонами. Для крупных заказов допускается поэтапная оплата отдельными платежами.</p></div><div class="cl"><span class="cl-n">6.4.</span><p class="cl-t">Исполнитель вправе не приступать к оказанию услуг, не бронировать время специалистов и не начинать сбор и анализ материалов до момента подтверждения поступления оплаты через платёжный сервис.</p></div><div class="cl"><span class="cl-n">6.5.</span><p class="cl-t">Оплата считается произведённой с момента получения Исполнителем подтверждения от платёжного сервиса Platega.io об успешном проведении платежа.</p></div><div class="cl"><span class="cl-n">6.6.</span><p class="cl-t">Банковские комиссии, комиссии платёжных систем, комиссии платёжного сервиса Platega.io и иные расходы на перевод денежных средств оплачиваются Заказчиком дополнительно (либо удерживаются из суммы платежа в соответствии с правилами платёжного сервиса).</p></div><div class="cl"><span class="cl-n">6.7.</span><p class="cl-t">Исполнитель не несёт ответственности за задержки, сбои, отказы или ошибки в работе платёжного сервиса Platega.io, банков-эмитентов и иных третьих лиц, участвующих в проведении платежа.</p></div></div>
+</article>
+<article class="sec" id="s7">
+  <h2 class="sec-h"><span class="sec-n">7</span><span>ПОРЯДОК ВНЕСЕНИЯ ИЗМЕНЕНИЙ И КОРРЕКТИРОВОК</span></h2>
+  <div class="sec-b"><div class="cl"><span class="cl-n">7.1.</span><p class="cl-t">Заказчик вправе запросить не более 2 (двух) бесплатных корректировок при условии, что требования относятся к первоначальному ТЗ, замечания предоставлены письменно, конкретизированы и основаны на требованиях преподавателя.</p></div><div class="cl"><span class="cl-n">7.2.</span><p class="cl-t">Корректировки, связанные с изменением темы, структуры, объёма, методических требований, источников, уровня оригинальности или сроков, признаются новым заказом и оплачиваются отдельно.</p></div><div class="cl"><span class="cl-n">7.3.</span><p class="cl-t">Исполнитель самостоятельно определяет способы выполнения, структуру, методы анализа, используемые источники и формат изложения материала.</p></div></div>
+</article>
+<article class="sec" id="s8">
+  <h2 class="sec-h"><span class="sec-n">8</span><span>ПОРЯДОК ПРИЁМКИ УСЛУГ</span></h2>
+  <div class="sec-b"><div class="cl"><span class="cl-n">8.1.</span><p class="cl-t">Результат оказания услуг передаётся Заказчику посредством мессенджеров (включая Telegram, WhatsApp, ВКонтакте, Instagram), электронной почты, облачных сервисов либо иных электронных средств связи, указанных в настоящей Оферте.</p></div><div class="cl"><span class="cl-n">8.2.</span><p class="cl-t">Услуги считаются оказанными надлежащим образом с момента направления результата Заказчику.</p></div><div class="cl"><span class="cl-n">8.3.</span><p class="cl-t">Заказчик обязан в течение 3 (трёх) календарных дней с момента получения результата направить мотивированные замечания относительно явных недостатков либо подтвердить приёмку.</p></div><div class="cl"><span class="cl-n">8.4.</span><p class="cl-t">Если в установленный срок замечания относительно явных недостатков не поступили, результат считается принятым Заказчиком. Настоящее условие не ограничивает право Заказчика заявить о скрытых недостатках в разумный срок в соответствии со ст. 29 Закона РФ «О защите прав потребителей».</p></div><div class="cl"><span class="cl-n">8.5.</span><p class="cl-t">Замечания, не содержащие конкретных ссылок на первоначальное ТЗ, рассмотрению не подлежат.</p></div><div class="cl"><span class="cl-n">8.6.</span><p class="cl-t">Факт скачивания материалов, открытия файлов, направления материалов третьим лицам либо отсутствия ответа в установленный срок может учитываться как подтверждение получения результата Заказчиком, но не лишает Заказчика права заявить о скрытых недостатках в порядке, предусмотренном законодательством.</p></div></div>
+</article>
+<article class="sec" id="s9">
+  <h2 class="sec-h"><span class="sec-n">9</span><span>ОРИГИНАЛЬНОСТЬ И СИСТЕМЫ ПРОВЕРКИ</span></h2>
+  <div class="sec-b"><div class="cl"><span class="cl-n">9.1.</span><p class="cl-t">Показатели оригинальности зависят от используемой системы проверки, версии программного обеспечения, внутренних алгоритмов, настроек образовательной организации, базы источников и даты проверки.</p></div><div class="cl"><span class="cl-n">9.2.</span><p class="cl-t">Исполнитель не гарантирует идентичность результатов проверки в различных системах.</p></div><div class="cl"><span class="cl-n">9.3.</span><p class="cl-t">Исполнитель не несёт ответственности за изменение алгоритмов проверки, обновление баз данных, внутренние регламенты учебных заведений и расхождения результатов проверки.</p></div><div class="cl"><span class="cl-n">9.4.</span><p class="cl-t">Если стороны письменно согласовали конкретный показатель оригинальности, обязательство Исполнителя считается исполненным при достижении показателя в используемой на момент проверки системе.</p></div><div class="cl"><span class="cl-n">9.5.</span><p class="cl-t">Исполнитель вправе проводить проверку материалов на оригинальность с использованием сервиса https://plagiat.ai/. Результаты проверки в указанном сервисе не являются гарантией идентичных результатов в иных системах проверки. Исполнитель не несёт ответственности за расхождения в показателях оригинальности.</p></div></div>
+</article>
+<article class="sec" id="s10">
+  <h2 class="sec-h"><span class="sec-n">10</span><span>ИНТЕЛЛЕКТУАЛЬНАЯ СОБСТВЕННОСТЬ</span></h2>
+  <div class="sec-b"><div class="cl"><span class="cl-n">10.1.</span><p class="cl-t">Исключительные права на материалы до момента полной оплаты принадлежат Исполнителю.</p></div><div class="cl"><span class="cl-n">10.2.</span><p class="cl-t">Исключительное право переходит к Заказчику в полном объёме с момента полной оплаты.</p></div><div class="cl"><span class="cl-n">10.3.</span><p class="cl-t">Заказчику запрещается: перепродавать материалы; размещать материалы в открытом доступе; передавать материалы третьим лицам в коммерческих целях; использовать материалы для создания конкурирующих сервисов; распространять заведомо недостоверные сведения об Исполнителе или качестве оказанных услуг.</p></div><div class="cl"><span class="cl-n">10.4.</span><p class="cl-t">Исполнитель вправе использовать обезличенные фрагменты материалов в портфолио, для внутренней аналитики, в целях обучения и в качестве примеров только с согласия Заказчика.</p></div></div>
+</article>
+<article class="sec" id="s11">
+  <h2 class="sec-h"><span class="sec-n">11</span><span>ОТКАЗ ОТ ДОГОВОРА И ВОЗВРАТ ДЕНЕЖНЫХ СРЕДСТВ</span></h2>
+  <div class="sec-b"><div class="cl"><span class="cl-n">11.1.</span><p class="cl-t">Заказчик вправе отказаться от договора в любое время в соответствии со ст. 782 ГК РФ.</p></div><div class="cl"><span class="cl-n">11.2.</span><p class="cl-t">При отказе Заказчика возврат денежных средств осуществляется за вычетом стоимости фактически оказанных услуг, выполненного объёма работ, документально подтверждённых фактически понесённых расходов, комиссий платёжных систем и комиссий платёжного сервиса.</p></div><div class="cl"><span class="cl-n">11.3.</span><p class="cl-t">К фактически понесённым расходам относятся документально подтверждённые расходы, в том числе: анализ материалов, подготовка структуры, подбор источников, консультации, подготовка промежуточных версий, работа специалистов, редактура и проверка, организационные и административные расходы, а также комиссии платёжного сервиса, возникшие в связи с исполнением заказа.</p></div><div class="cl"><span class="cl-n">11.4.</span><p class="cl-t">Если результат оказания услуг был передан Заказчику полностью либо частично, возврат осуществляется с вычетом документально подтверждённых фактически понесённых расходов.</p></div><div class="cl"><span class="cl-n">11.5.</span><p class="cl-t">Возврат денежных средств осуществляется тем же способом, которым была произведена оплата, если иное не согласовано сторонами. Срок рассмотрения заявления на возврат составляет до 10 рабочих дней.</p></div><div class="cl"><span class="cl-n">11.6.</span><p class="cl-t">Возврат средств, проведённых через платёжный сервис Platega.io, осуществляется в соответствии с правилами указанного сервиса. Исполнитель не несёт ответственности за сроки и условия возврата, устанавливаемые платёжным сервисом, банками и иными третьими лицами.</p></div><div class="cl"><span class="cl-n">11.7.</span><p class="cl-t">Обстоятельства злоупотребления правом, угроз, шантажа, попыток необоснованного получения результата и возврата одновременно, а также передачи материалов третьим лицам могут учитываться при определении объёма подлежащих возврату средств при наличии документального подтверждения таких обстоятельств.</p></div></div>
+</article>
+<article class="sec" id="s12">
+  <h2 class="sec-h"><span class="sec-n">12</span><span>ОГРАНИЧЕНИЕ ОТВЕТСТВЕННОСТИ</span></h2>
+  <div class="sec-b"><div class="cl"><span class="cl-n">12.1.</span><p class="cl-t">Исполнитель не несёт ответственности за решения преподавателей, результаты аттестации, отказ в принятии материалов, академические последствия, действия третьих лиц, технические ограничения платформ и последствия использования материалов Заказчиком.</p></div><div class="cl"><span class="cl-n">12.2.</span><p class="cl-t">Исполнитель не несёт ответственности за действия, решения или технические сбои платёжного сервиса Platega.io, банков, мессенджеров (включая Telegram, WhatsApp, ВКонтакте, Instagram), операторов связи и иных третьих лиц, в том числе за задержку, отказ или ошибки в проведении платежей, блокировку аккаунтов и недоступность сервисов.</p></div><div class="cl"><span class="cl-n">12.3.</span><p class="cl-t">Исполнитель не гарантирует достижение каких-либо образовательных, академических либо профессиональных результатов.</p></div><div class="cl"><span class="cl-n">12.4.</span><p class="cl-t">Максимальный размер ответственности Исполнителя по любым требованиям ограничивается суммой, фактически уплаченной Заказчиком по конкретному заказу. Настоящее условие не применяется в случаях, когда законом установлена иная ответственность.</p></div><div class="cl"><span class="cl-n">12.5.</span><p class="cl-t">Упущенная выгода, косвенные убытки и иные непрямые потери взысканию не подлежат, за исключением случаев, предусмотренных законом. Настоящее условие не ограничивает право Заказчика-потребителя на компенсацию морального вреда в соответствии с законодательством.</p></div><div class="cl"><span class="cl-n">12.6.</span><p class="cl-t">Исполнитель не несёт ответственности за невозможность оказания услуг по причинам, не зависящим от него.</p></div><div class="cl"><span class="cl-n">12.7.</span><p class="cl-t">Заказчик подтверждает, что услуги носят информационно-консультационный характер, и принимает на себя все риски, связанные с их использованием.</p></div></div>
+</article>
+<article class="sec" id="s13">
+  <h2 class="sec-h"><span class="sec-n">13</span><span>ЭЛЕКТРОННОЕ ВЗАИМОДЕЙСТВИЕ</span></h2>
+  <div class="sec-b"><div class="cl"><span class="cl-n">13.1.</span><p class="cl-t">Стороны признают юридическую силу переписки по электронной почте, сообщений в мессенджерах (включая Telegram, WhatsApp, ВКонтакте, Instagram), сообщений в социальных сетях, электронных файлов и электронных копий документов.</p></div><div class="cl"><span class="cl-n">13.2.</span><p class="cl-t">Скриншоты переписки, электронные журналы, сведения о передаче файлов, уведомления платёжного сервиса, сообщения Telegram-бота и иные электронные данные признаются допустимыми доказательствами.</p></div><div class="cl"><span class="cl-n">13.3.</span><p class="cl-t">Заказчик самостоятельно обеспечивает сохранность доступа к своим аккаунтам и актуальность контактных данных.</p></div></div>
+</article>
+<article class="sec" id="s14">
+  <h2 class="sec-h"><span class="sec-n">14</span><span>КОНФИДЕНЦИАЛЬНОСТЬ</span></h2>
+  <div class="sec-b"><div class="cl"><span class="cl-n">14.1.</span><p class="cl-t">Исполнитель гарантирует конфиденциальность персональных данных Заказчика и факта обращения за услугами.</p></div><div class="cl"><span class="cl-n">14.2.</span><p class="cl-t">Обработка персональных данных осуществляется исключительно в целях исполнения договора и в соответствии с Федеральным законом от 27.07.2006 № 152-ФЗ «О персональных данных».</p></div><div class="cl"><span class="cl-n">14.3.</span><p class="cl-t">Заказчик предоставляет согласие на сбор, хранение, систематизацию и использование персональных данных в целях исполнения договора, коммуникации и разрешения претензий.</p></div></div>
+</article>
+<article class="sec" id="s15">
+  <h2 class="sec-h"><span class="sec-n">15</span><span>ФОРС-МАЖОР</span></h2>
+  <div class="sec-b"><div class="cl"><span class="cl-n">15.1.</span><p class="cl-t">Стороны освобождаются от ответственности за неисполнение обязательств при наступлении обстоятельств непреодолимой силы (ст. 401 ГК РФ).</p></div><div class="cl"><span class="cl-n">15.2.</span><p class="cl-t">К таким обстоятельствам относятся: сбои связи, перебои электроснабжения, действия государственных органов, санкции, чрезвычайные ситуации, массовые сбои сервисов (включая Telegram, WhatsApp, ВКонтакте, Instagram и Platega.io), хакерские атаки и иные обстоятельства вне разумного контроля сторон.</p></div><div class="cl"><span class="cl-n">15.3.</span><p class="cl-t">Срок исполнения обязательств продлевается на период действия обстоятельств непреодолимой силы.</p></div></div>
+</article>
+<article class="sec" id="s16">
+  <h2 class="sec-h"><span class="sec-n">16</span><span>ПОРЯДОК РАЗРЕШЕНИЯ СПОРОВ</span></h2>
+  <div class="sec-b"><div class="cl"><span class="cl-n">16.1.</span><p class="cl-t">Споры подлежат урегулированию путём переговоров.</p></div><div class="cl"><span class="cl-n">16.2.</span><p class="cl-t">До обращения в суд сторона обязана направить письменную претензию. Срок рассмотрения претензии составляет 10 рабочих дней.</p></div><div class="cl"><span class="cl-n">16.3.</span><p class="cl-t">При невозможности урегулирования спора он рассматривается в соответствии с законодательством Российской Федерации.</p></div></div>
+</article>
+<article class="sec" id="s17">
+  <h2 class="sec-h"><span class="sec-n">17</span><span>ЗАКЛЮЧИТЕЛЬНЫЕ ПОЛОЖЕНИЯ</span></h2>
+  <div class="sec-b"><div class="cl"><span class="cl-n">17.1.</span><p class="cl-t">Исполнитель вправе изменять настоящую оферту в одностороннем порядке. Новая редакция вступает в силу с момента публикации и не распространяется на договоры, заключённые до момента её вступления в силу. Изменения не распространяются на уже оплаченные заказы.</p></div><div class="cl"><span class="cl-n">17.2.</span><p class="cl-t">Заказчик обязан самостоятельно отслеживать актуальную редакцию оферты. Актуальная редакция всегда доступна на Сайте, а также может быть запрошена у Администратора перед оплатой.</p></div><div class="cl"><span class="cl-n">17.3.</span><p class="cl-t">Недействительность отдельного положения не влечёт недействительности остальных положений (ст. 180 ГК РФ).</p></div><div class="cl"><span class="cl-n">17.4.</span><p class="cl-t">Во всём остальном стороны руководствуются действующим законодательством Российской Федерации.</p></div><div class="cl"><span class="cl-n">17.5.</span><p class="cl-t">В отношении Заказчиков-потребителей применяются положения законодательства Российской Федерации о защите прав потребителей в части, не урегулированной настоящей Офертой и не противоречащей ей.</p></div></div>
+</article>
+
+    <section class="contacts">
+      <h2>КОНТАКТНЫЕ ДАННЫЕ</h2>
+      <div class="ct-grid">
+        <a class="ct" href="https://www.novascriptum.ru" target="_blank" rel="noopener"><span class="ct-k">Сайт</span><span class="ct-v">www.novascriptum.ru</span></a>
+<a class="ct" href="https://wa.me/79933079373" target="_blank" rel="noopener"><span class="ct-k">WhatsApp</span><span class="ct-v">https://wa.me/79933079373</span></a>
+<a class="ct" href="https://t.me/NovaScriptum_admin" target="_blank" rel="noopener"><span class="ct-k">Telegram (администратор)</span><span class="ct-v">@NovaScriptum_admin</span></a>
+<a class="ct" href="https://t.me/NovaScriptum" target="_blank" rel="noopener"><span class="ct-k">Группа Telegram</span><span class="ct-v">https://t.me/NovaScriptum</span></a>
+<a class="ct" href="https://www.instagram.com/novascriptum_official" target="_blank" rel="noopener"><span class="ct-k">Instagram</span><span class="ct-v">https://www.instagram.com/novascriptum_official</span></a>
+<a class="ct" href="https://vk.ru/novascriptum" target="_blank" rel="noopener"><span class="ct-k">ВКонтакте</span><span class="ct-v">https://vk.ru/novascriptum</span></a>
+<a class="ct" href="mailto:evgenyzaratuchenko@gmail.com" target="_blank" rel="noopener"><span class="ct-k">Электронная почта</span><span class="ct-v">evgenyzaratuchenko@gmail.com</span></a>
+      </div>
+      <p class="pp">Оплата услуг производится через Telegram-бота после согласования заказа с администратором. Платёж обрабатывается сервисом Platega.io.</p>
+      <p class="copy">© NovaScriptum, 2026. Все права защищены.</p>
+    </section>
+  </main>
+</div>
+
+<footer class="foot">
+  <a href="index.html">Вернуться на сайт</a> · <a href="oferta.txt" target="_blank" rel="noopener">Исходный текст в .txt</a>
+</footer>
+
+<script>
+(function () {
+  var root = document.documentElement;
+
+  document.getElementById('theme').addEventListener('click', function () {
+    var next = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('ns-theme', next); } catch (e) {}
+  });
+
+  document.getElementById('print').addEventListener('click', function () { window.print(); });
+
+  var links = Array.prototype.slice.call(document.querySelectorAll('.toc-a'));
+  var sections = links.map(function (a) { return document.getElementById(a.getAttribute('href').slice(1)); });
+  var byId = {};
+  links.forEach(function (a) { byId[a.getAttribute('href').slice(1)] = a; });
+
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        links.forEach(function (a) { a.classList.remove('on'); });
+        var active = byId[e.target.id];
+        if (active) active.classList.add('on');
+      });
+    }, { rootMargin: '-90px 0px -70% 0px', threshold: 0 });
+    sections.forEach(function (s) { if (s) io.observe(s); });
+  }
+})();
+</script>
+</body>
+</html>

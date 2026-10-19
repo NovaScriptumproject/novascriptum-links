@@ -32,11 +32,9 @@
 * **📱 Чат WhatsApp:** [+7 (993) 307-93-73](https://wa.me/79933079373) — *быстрая клиентская поддержка*
 * **📩 Наша почта:** [evgenyzaratuchenko@gmail.com](mailto:evgenyzaratuchenko@gmail.com) — *для официальных запросов*
 
-### Резервный доступ:
-* **🌐 Зеркало сайта:** [nova.tail080007.ts.net](https://nova.tail080007.ts.net) — *резервная копия лендинга на собственном сервере; используйте, если основной домен недоступен*
-
 ### Наше медиа-пространство:
 * **📢 Telegram-канал:** [NovaScriptum](https://t.me/NovaScriptum) — *основной ресурс проекта, публикации и отзывы*
+* **⭐ Отзывы клиентов:** [NovaScriptum_feedback](https://t.me/NovaScriptum_feedback) — *канал с отзывами*
 * **👥 Сообщество ВКонтакте:** [vk.ru/novascriptum](https://vk.ru/novascriptum) — *полезные материалы, статьи и кейсы*
 * **📸 Профиль Instagram:** [@NovaScriptum_official](https://instagram.com/NovaScriptum_official) — *официальный блог*
 
