@@ -371,28 +371,6 @@ h1, h2, h3, h4 {
     letter-spacing: 0.01em;
 }
 
-.btn-mirror {
-    padding: 14px 22px;
-    font-size: 0.8125rem;
-    font-weight: 500;
-    background: transparent;
-    color: var(--text-secondary);
-    border: 1px solid var(--border-strong);
-    letter-spacing: 0.02em;
-}
-
-.btn-mirror i {
-    font-size: 0.8125rem;
-    color: var(--accent);
-}
-
-.btn-mirror:hover {
-    color: var(--accent);
-    border-color: var(--accent-border);
-    background: var(--accent-soft);
-    transform: translateY(-1px);
-}
-
 .hero-scroll {
     position: absolute;
     bottom: 32px;
@@ -443,6 +421,28 @@ h1, h2, h3, h4 {
 .btn-secondary:hover {
     background: var(--accent);
     color: #fff;
+    transform: translateY(-1px);
+}
+
+.btn-mirror {
+    padding: 14px 22px;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    background: transparent;
+    color: var(--text-secondary);
+    border: 1px solid var(--border-strong);
+    letter-spacing: 0.02em;
+}
+
+.btn-mirror i {
+    font-size: 0.8125rem;
+    color: var(--accent);
+}
+
+.btn-mirror:hover {
+    color: var(--accent);
+    border-color: var(--accent-border);
+    background: var(--accent-soft);
     transform: translateY(-1px);
 }
 
