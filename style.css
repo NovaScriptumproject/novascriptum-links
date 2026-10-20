@@ -371,6 +371,24 @@ h1, h2, h3, h4 {
     letter-spacing: 0.01em;
 }
 
+.btn-ghost {
+    background: transparent;
+    color: var(--text-secondary);
+    border: 1px solid var(--border-strong);
+}
+
+.btn-ghost:hover {
+    color: var(--accent);
+    border-color: var(--accent-border);
+    background: var(--accent-soft);
+    transform: translateY(-1px);
+}
+
+.btn-ghost i {
+    font-size: 0.8125rem;
+    opacity: 0.8;
+}
+
 .hero-scroll {
     position: absolute;
     bottom: 32px;
