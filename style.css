@@ -371,22 +371,26 @@ h1, h2, h3, h4 {
     letter-spacing: 0.01em;
 }
 
-.btn-ghost {
+.btn-mirror {
+    padding: 14px 22px;
+    font-size: 0.8125rem;
+    font-weight: 500;
     background: transparent;
     color: var(--text-secondary);
     border: 1px solid var(--border-strong);
+    letter-spacing: 0.02em;
 }
 
-.btn-ghost:hover {
+.btn-mirror i {
+    font-size: 0.8125rem;
+    color: var(--accent);
+}
+
+.btn-mirror:hover {
     color: var(--accent);
     border-color: var(--accent-border);
     background: var(--accent-soft);
     transform: translateY(-1px);
-}
-
-.btn-ghost i {
-    font-size: 0.8125rem;
-    opacity: 0.8;
 }
 
 .hero-scroll {
@@ -1671,6 +1675,15 @@ body.has-cart { padding-bottom: 84px; }
     .cart-bar-info { min-width: 0; }
     .cart-bar-text { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
     .cart-bar-btn { flex: none; }
+
+    /* На узких экранах зеркало уходит на отдельную строку под двумя
+       основными кнопками и не растягивается на всю ширину */
+    .hero-actions .btn-mirror {
+        order: 3;
+        flex-basis: 100%;
+        width: fit-content;
+        margin: 0 auto;
+    }
 }
 
 @media (max-width: 480px) {
