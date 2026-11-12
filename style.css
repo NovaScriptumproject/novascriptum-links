@@ -752,7 +752,7 @@ h1, h2, h3, h4 {
 
 .contacts-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 16px;
 }
 
@@ -821,16 +821,10 @@ h1, h2, h3, h4 {
 .contact-tg:hover { border-color: rgba(36, 161, 222, 0.4); }
 .contact-tg:hover .contact-icon { background: #24A1DE; border-color: #24A1DE; }
 
-.contact-wa:hover { border-color: rgba(37, 211, 102, 0.4); }
-.contact-wa:hover .contact-icon { background: #25D366; border-color: #25D366; }
-
 .contact-email:hover { border-color: var(--accent-border); }
 
 .contact-channel:hover { border-color: rgba(36, 161, 222, 0.4); }
 .contact-channel:hover .contact-icon { background: #24A1DE; border-color: #24A1DE; }
-
-.contact-vk:hover { border-color: rgba(0, 119, 255, 0.4); }
-.contact-vk:hover .contact-icon { background: #0077FF; border-color: #0077FF; }
 
 .contact-insta:hover { border-color: rgba(220, 39, 67, 0.4); }
 .contact-insta:hover .contact-icon {

@@ -98,9 +98,7 @@
 
 - **Telegram, заказы:** [@NovaScriptum_admin](https://t.me/NovaScriptum_admin)
 - **Канал проекта:** [@NovaScriptum](https://t.me/NovaScriptum)
-- **WhatsApp:** [+7 993 307-93-73](https://wa.me/79933079373)
 - **Почта:** [evgenyzaratuchenko@gmail.com](mailto:evgenyzaratuchenko@gmail.com)
-- **ВКонтакте:** [vk.ru/novascriptum](https://vk.ru/novascriptum)
 - **Instagram:** [@NovaScriptum_official](https://instagram.com/NovaScriptum_official)
 
 ---
